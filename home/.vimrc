@@ -22,7 +22,6 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-commentary'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'SirVer/ultisnips'
 " Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'sjl/gundo.vim'
@@ -32,6 +31,7 @@ Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'godlygeek/tabular'
 "Forked versions
 Bundle 'michamos/tagbar'
+Bundle 'michamos/vim-powerline'
 " vim-scripts repos
 Bundle 'matchit.zip'
 " External git repo
