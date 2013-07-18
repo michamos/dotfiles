@@ -151,7 +151,6 @@ noremap <Leader>g :Gstatus<CR>
 " ----------
 " Latex-suite settings, not used any more {{{3 "
 "set grepprg=grep\ -nH\ $*
-"let g:tex_flavor='latex'
 "let g:Tex_DefaultTargetFormat='pdf'
 "let g:Imap_UsePlaceHolders=0 " on utilise ultisnips
 "" compilation automatique à chaque écriture du buffer
@@ -159,6 +158,7 @@ noremap <Leader>g :Gstatus<CR>
 "" disable replacing of "é" with "\item"
 "imap <buffer> <Plug>deactivated_tex_item <Plug>Tex_InsertItemOnThisLine
 " 3}}} "
+let g:tex_flavor='latex'
 autocmd! BufWritePost *.tex silent call LatexBox_Latexmk(0)
 if has("macunix")
   let g:LatexBox_viewer="open -a Skim"
