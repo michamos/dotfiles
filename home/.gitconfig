@@ -1,0 +1,22 @@
+[user]
+	name = Micha Moskovic
+	email = michamos@gmail.com
+[core]
+	excludesfile = ~/.gitignore
+[alias]
+	ldiff = difftool -t latex
+[difftool]
+	prompt = false
+[difftool "latex"]
+	cmd = latexdiff "$LOCAL" "$REMOTE"
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[init]
+	templatedir = ~/.git_template
+
+[push]
+	default = simple

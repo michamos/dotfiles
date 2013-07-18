@@ -1,0 +1,3 @@
+--langdef=bibtex
+--langmap=bibtex:.bib
+--regex-bibtex=/^@[A-Za-z]+\{([^,]*)/\1/b,bib/
