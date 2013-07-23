@@ -278,7 +278,6 @@ autocmd! BufWritePost .vimrc source ~/.vimrc | PowerlineReloadColorscheme
 " edit dotfiles easily {{{2
 " -------------------------
 noremap <Leader>ed :split ~/.homesick/repos/dotfiles/<CR>
-noremap <Leader>ev :split ~/.vimrc<CR>
-noremap <Leader>eb :split ~/.vim/bundle/<CR>
+noremap <Leader>ev :split ~/.homesick/repos/dotfiles/home/.vimrc<CR>
 " modeline {{{1
 " vim: set foldmethod=marker et sw=2 sts=2:
