@@ -82,3 +82,17 @@ noremap » >
 " __________________
 noremap , ;
 noremap ; ,
+
+" Remapper la gestion des fenêtres
+" ———————————————————————————————
+noremap wt <C-w>j
+noremap ws <C-w>k
+noremap wc <C-w>h
+noremap wr <C-w>l
+noremap wT <C-w>J
+noremap wS <C-w>K
+noremap wC <C-w>H
+noremap wR <C-w>L
+noremap wd <C-w>c
+noremap wo <C-w>s
+noremap wu <C-w>o

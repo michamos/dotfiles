@@ -49,7 +49,7 @@ filetype plugin indent on
 " =============
 
 " remap keyboard to use the bépo layout (http://www.bepo.fr)
-source ~/.vim/bepo.vim
+runtime bepo.vim
 
 " other convenient mappings {{{2
 " ------------------------------
@@ -278,7 +278,7 @@ autocmd! BufWritePost .vimrc source ~/.vimrc | PowerlineReloadColorscheme
 
 " edit dotfiles easily {{{2
 " -------------------------
-noremap <Leader>ed :split ~/.homesick/repos/dotfiles/<CR>
+noremap <Leader>ed :split ~/.homesick/repos/dotfiles/home/<CR>
 noremap <Leader>ev :split ~/.homesick/repos/dotfiles/home/.vimrc<CR>
 " modeline {{{1
 " vim: set foldmethod=marker et sw=2 sts=2:
