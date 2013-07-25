@@ -167,7 +167,8 @@ elseif has("unix") "assuming linux if not OSX
 endif
 "let g:LatexBox_show_warnings=0 "don't show compilation warnings, only errors
 let g:LatexBox_Folding=1
-let g:LatexBox_latexmk_options="-pdflatex='pdflatex -synctex=1 \\%O \\%S'"
+let g:LatexBox_latexmk_options="-pdflatex='pdflatex -synctex=1 \%O \%S'"
+let g:LatexBox_latexmk_async=1
 let g:LatexBox_quickfix=2 "do not jump to quickfix window
 
 " ultisnips {{{2
