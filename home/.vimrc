@@ -185,7 +185,8 @@ let g:UltiSnipsDontReverseSearchPath="1" "necessary to make overrides work corre
 if has("gui_running")
   colorscheme solarized
   let g:Powerline_colorscheme='solarized'
-  set guioptions-=Tm " no buttons nor menus
+  set guioptions-=T " no buttons nor menus
+  set guioptions-=m
   if has("gui_gtk2")
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
   elseif has("gui_macvim")
