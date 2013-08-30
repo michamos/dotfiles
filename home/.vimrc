@@ -30,8 +30,8 @@ Bundle 'sjl/AnsiEsc.vim'
 Bundle 'pydave/renamer.vim'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'godlygeek/tabular'
+Bundle 'majutsushi/tagbar'
 "Forked versions
-Bundle 'michamos/tagbar'
 Bundle 'michamos/vim-powerline'
 " vim-scripts repos
 Bundle 'matchit.zip'
@@ -120,6 +120,7 @@ let g:gundo_map_move_newer="s"
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 let g:tagbar_autofocus=1
 let g:tagbar_autoclose = 1
+let g:tagbar_map_togglesort="k"
 " not needed if using ctags > 5.8
 " let g:tagbar_type_tex = {
 " 			\ 'ctagstype' : 'latex',
