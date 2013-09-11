@@ -24,15 +24,13 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-dispatch'
 Bundle 'SirVer/ultisnips'
-" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'sjl/gundo.vim'
 Bundle 'sjl/AnsiEsc.vim'
 Bundle 'pydave/renamer.vim'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
-"Forked versions
-Bundle 'michamos/vim-powerline'
+Bundle 'bling/vim-airline'
 " vim-scripts repos
 Bundle 'matchit.zip'
 " External git repo
@@ -140,10 +138,9 @@ let g:tagbar_type_bib = {
                         \ ]
  			\ }
 
-" powerline {{{2
-" --------------
-set laststatus=2
-let g:Powerline_symbols='fancy'
+" vim-airline {{{2
+" ----------------
+let g:airline_powerline_fonts=1
 
 " fugitive {{{2
 " -------------
@@ -185,7 +182,6 @@ let g:UltiSnipsDontReverseSearchPath="1" "necessary to make overrides work corre
 " ----------
 if has("gui_running")
   colorscheme solarized
-  let g:Powerline_colorscheme='solarized'
   set guioptions-=T " no buttons nor menus
   set guioptions-=m
   if has("gui_gtk2")
@@ -202,7 +198,6 @@ function! ToggleBG()
   else
     set background=light
   endif
-  PowerlineReloadColorscheme
 endfunction
 noremap <silent> <Leader>s :call ToggleBG()<CR>
 
@@ -277,7 +272,7 @@ endif
 
 " source the .vimrc file on save to apply all changes immediately {{{2
 " --------------------------------------------------------------------
-autocmd! BufWritePost .vimrc source ~/.vimrc | PowerlineReloadColorscheme
+autocmd! BufWritePost .vimrc source ~/.vimrc
 
 " edit dotfiles easily {{{2
 " -------------------------
