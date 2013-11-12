@@ -47,6 +47,8 @@ filetype plugin indent on
 " Mappings {{{1
 " =============
 
+"Use a more accessible key as <Leader>, <Space> is redundant by default
+let mapleader = "\<Space>"
 " remap keyboard to use the bépo layout (http://www.bepo.fr)
 runtime bepo.vim
 
@@ -66,12 +68,16 @@ xnoremap s gk
 noremap <Leader><Leader> :w<CR>
 
 " show some useful lists
-noremap <Leader>b :ls<CR>:b<space>
+noremap <Leader># :ls<CR>:b<space>
 noremap <Leader>' :marks<CR>
 noremap <Leader>" :registers<CR>
 
+" easily change buffers
+noremap <Leader>b :bprevious<CR>
+noremap <Leader>é :bnext<CR>
+
 " toggle the display of hidden characters (in 'listchars')
-noremap <silent> <Leader>lc :set list!<CR>
+noremap <silent> <Leader>c :set list!<CR>
 
 " '<Esc>' is far away, use '<C-Space>' instead
 noremap <C-Space> <Esc>

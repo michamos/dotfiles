@@ -12,42 +12,15 @@ snippet ^ "Exponent with braces" i
 ^{$1}
 endsnippet
 
-snippet a "alpha" i!
-\alpha 
+snippet eq "Equation environment with label" !b
+\begin{equation}
+	$1${VISUAL}
+	\label{$2}
+\end{equation}
 endsnippet
 
-snippet b "beta" i!
-\beta 
-endsnippet
-
-snippet g "gamma" i!
-\gamma 
-endsnippet
-
-snippet d "delta" i!
-\delta 
-endsnippet
-
-snippet e "epsilon" i!
-\epsilon 
-endsnippet
-
-snippet m "mu" i!
-\mu 
-endsnippet
-
-snippet n "nu" i!
-\nu 
-endsnippet
-
-snippet r "rho" i!
-\rho 
-endsnippet
-
-snippet l "lambda" i!
-\lambda 
-endsnippet
-
-snippet s "sigma" i!
-\sigma 
+snippet env "Generic environment" !b
+\begin{$1}
+	$0${VISUAL}
+\end{$1}
 endsnippet
