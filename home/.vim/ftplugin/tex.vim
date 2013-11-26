@@ -7,12 +7,16 @@ setl sw=2
 setl iskeyword+=:
 
 "forward search
-map <silent> <Leader>ls :silent !~/bin/pdfviewer
+map <silent> <buffer> <Leader>ls :silent !~/bin/pdfviewer
 		\ "<C-R>=LatexBox_GetOutputFile()<CR>" <C-R>=line('.')<CR> "%:p" <CR>
 
 
 " remove sub/superscripts replacement with conceal
 let g:tex_conceal='adgm'
+
+" correct common mistakes
+iabbrev <buffer> i.e. i.e.\
+iabbrev <buffer> e.g. e.g.\
 
 " Latex-suite settings, not used anymore
 " --------------------------------------

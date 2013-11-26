@@ -1,3 +1,11 @@
+snippet fig "Figure environment" !b
+\begin{figure}
+	\centering${1:\includegraphics[scale=${3:1}]{$2}}
+	\caption{$4}
+	\label{fig$5}
+\end{figure}
+endsnippet
+
 snippet ali "Align environment" !b
 \begin{align}
 	$1
