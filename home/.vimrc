@@ -31,6 +31,7 @@ Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
 Bundle 'bling/vim-airline'
+Bundle 'tommcdo/vim-exchange'
 " vim-scripts repos
 Bundle 'matchit.zip'
 " External git repo
@@ -184,6 +185,13 @@ let g:UltiSnipsJumpForwardTrigger="<C-t>"
 let g:UltiSnipsJumpBackwardTrigger="<C-s>"
 let g:UltiSnipsDontReverseSearchPath="1" "necessary to make overrides work correctly, with vundle rtp
 
+" vim-exchange {{{2
+" -----------------
+let g:exchange_no_mappings = 1
+nmap lx <Plug>Exchange
+vmap lx <Plug>Exchange
+nmap lxc <Plug>ExchangeClear
+nmap lxx <Plug>ExchangeLine
 " Style {{{1
 " ----------
 if has("gui_running")
