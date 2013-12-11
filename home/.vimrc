@@ -78,7 +78,10 @@ noremap <Leader>b :bprevious<CR>
 noremap <Leader>é :bnext<CR>
 
 " toggle the display of hidden characters (in 'listchars')
-noremap <silent> <Leader>c :set list!<CR>
+noremap <silent> <Leader>cl :set list!<CR>
+
+" cd to the directory of the current file
+noremap <silent> <Leader>cd :cd %:p:h<CR>
 
 " '<Esc>' is far away, use '<C-Space>' instead
 noremap <C-Space> <Esc>
