@@ -203,8 +203,10 @@ nmap lxc <Plug>ExchangeClear
 nmap lxx <Plug>ExchangeLine
 " Style {{{1
 " ----------
-if has("gui_running")
+if has("gui_running") || exists("$TERM_PROGRAM") && $TERM_PROGRAM ==# "iTerm.app"
   colorscheme solarized
+endif
+if has("gui_running")
   set guioptions-=T " no buttons nor menus
   set guioptions-=m
   if has("gui_gtk2")
