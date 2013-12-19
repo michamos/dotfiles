@@ -8,4 +8,6 @@ PATH=~/bin:$PATH
 #Make cask install apps in /Applications
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-alias homeshick="$HOME/.homesick/repos/homeshick/home/.homeshick"
+source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+
+source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
