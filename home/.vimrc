@@ -23,6 +23,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-dispatch'
+Bundle 'tpope/vim-sleuth'
+Bundle 'tpope/vim-speeddating'
 Bundle 'SirVer/ultisnips'
 Bundle 'sjl/gundo.vim'
 Bundle 'sjl/AnsiEsc.vim'
@@ -100,6 +102,10 @@ noremap ` '
 " Use 'C'/'R' to operate on the current line rather than the screen
 noremap C ^
 noremap R $
+
+" Use 'U' for redo, basic 'U' is useless
+noremap U <C-r>
+
 " '*' is far away, we use 'M' to put the word under the cursor in the search
 " register, then we can move with 'n'/'N'
 noremap <silent> M :silent! execute "normal! *\<C-o>"<CR>
@@ -295,5 +301,10 @@ autocmd! BufWritePost .vimrc source ~/.vimrc
 " -------------------------
 noremap <Leader>ed :split ~/.homesick/repos/dotfiles/home/<CR>
 noremap <Leader>ev :split ~/.homesick/repos/dotfiles/home/.vimrc<CR>
+
+" Use Vim's builtin help easily {{{2
+" ----------------------------------
+set keywordprg=:help
+
 " modeline {{{1
 " vim: set foldmethod=marker et sw=2 sts=2:
