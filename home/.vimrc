@@ -196,11 +196,10 @@ let g:UltiSnipsDontReverseSearchPath="1" "necessary to make overrides work corre
 
 " vim-exchange {{{2
 " -----------------
-let g:exchange_no_mappings = 1
-nmap lx <Plug>Exchange
-vmap lx <Plug>Exchange
-nmap lxc <Plug>ExchangeClear
-nmap lxx <Plug>ExchangeLine
+nmap lx <Plug>(Exchange)
+vmap x <Plug>(Exchange)
+nmap lxc <Plug>(ExchangeClear)
+nmap lxx <Plug>(ExchangeLine)
 " Style {{{1
 " ----------
 if has("gui_running") || exists("$TERM_PROGRAM") && $TERM_PROGRAM ==# "iTerm.app"
