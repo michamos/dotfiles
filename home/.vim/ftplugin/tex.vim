@@ -6,6 +6,9 @@ setl sw=2
 " all the figure labels. Very useful!
 setl iskeyword+=:
 
+" do not break lines in the middle of words
+setl linebreak
+
 "forward search
 map <silent> <buffer> <Leader>ls :silent !~/bin/pdfviewer
 		\ "<C-R>=LatexBox_GetOutputFile()<CR>" <C-R>=line('.')<CR> "%:p" <CR>

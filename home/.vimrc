@@ -24,6 +24,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-sleuth'
+Bundle 'tpope/vim-vinegar'
 Bundle 'tpope/vim-speeddating'
 Bundle 'SirVer/ultisnips'
 Bundle 'sjl/gundo.vim'
@@ -174,13 +175,14 @@ noremap <Leader>g :Gstatus<CR>
 "imap <buffer> <Plug>deactivated_tex_item <Plug>Tex_InsertItemOnThisLine
 " 3}}} "
 let g:tex_flavor='latex'
-autocmd! BufWritePost *.tex silent call LatexBox_Latexmk(0)
+autocmd! BufWritePost * if &filetype=='tex' | silent call LatexBox_Latexmk(0) | endif
 if has("macunix")
   let g:LatexBox_viewer="open -a Skim"
 elseif has("unix") "assuming linux if not OSX
   let g:LatexBox_viewer="xdg-open"
 endif
-let g:LatexBox_show_warnings=0 "don't show compilation warnings, only errors
+let g:LatexBox_show_warnings=1 "also show warnings
+let g:LatexBox_ignore_warnings=['Underfull', 'Overfull', 'specifier changed to', 'defernumbers']
 let g:LatexBox_Folding=1
 let g:LatexBox_latexmk_options="-pdflatex='pdflatex -synctex=1 \%O \%S'"
 let g:LatexBox_latexmk_async=1
