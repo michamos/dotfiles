@@ -20,6 +20,7 @@ let g:tex_conceal='adgm'
 " correct common mistakes
 iabbrev <buffer> i.e. i.e.\
 iabbrev <buffer> e.g. e.g.\
+iabbrev <buffer> lamdba lambda
 
 " Latex-suite settings, not used anymore
 " --------------------------------------

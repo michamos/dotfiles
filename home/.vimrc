@@ -27,6 +27,7 @@ Bundle 'tpope/vim-sleuth'
 Bundle 'tpope/vim-vinegar'
 Bundle 'tpope/vim-speeddating'
 Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 Bundle 'sjl/gundo.vim'
 Bundle 'sjl/AnsiEsc.vim'
 Bundle 'pydave/renamer.vim'
@@ -263,6 +264,13 @@ set showcmd "show incomplete commands
 " conceal characters, especially nice for TeX {{{2
 " ------------------------------------------------
 set conceallevel=2
+
+" use unicode characters for listchars, stolen from previous version of
+" sensible
+" ---------------------------------------------------------------------
+if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
+  let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+endif
 
 " command-line completion {{{2
 " ----------------------------
