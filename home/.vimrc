@@ -1,6 +1,9 @@
 " Vundle configuration {{{1
 " =========================
 
+" Initialization {{{2
+" -------------------
+
 " install vundle if not yet installed
 if ! filereadable(expand("~/.vim/bundle/vundle/.git/HEAD"))
   let s:first_run=1
@@ -10,37 +13,42 @@ endif
 filetype off                   " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-" Plug-in list {{{2
-" -----------------
-" Github repositories
-Bundle 'gmarik/vundle'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-sensible'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-sleuth'
-Bundle 'tpope/vim-vinegar'
-Bundle 'tpope/vim-speeddating'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'sjl/gundo.vim'
-Bundle 'sjl/AnsiEsc.vim'
-Bundle 'pydave/renamer.vim'
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
-Bundle 'godlygeek/tabular'
-Bundle 'majutsushi/tagbar'
-Bundle 'bling/vim-airline'
-Bundle 'tommcdo/vim-exchange'
-" vim-scripts repos
-Bundle 'matchit.zip'
-" External git repo
-" Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 " }}}
+
+" Plug-in list
+" ------------
+" Github repositories
+Plugin 'gmarik/vundle'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-vinegar'
+Plugin 'tpope/vim-speeddating'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'sjl/gundo.vim'
+Plugin 'sjl/AnsiEsc.vim'
+Plugin 'pydave/renamer.vim'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'godlygeek/tabular'
+Plugin 'majutsushi/tagbar'
+Plugin 'bling/vim-airline'
+Plugin 'tommcdo/vim-exchange'
+Plugin 'rking/ag.vim'
+" vim-scripts repos
+Plugin 'matchit.zip'
+" External git repo
+" Plugin 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+
+" More initialization {{{2
+" ------------------------
 " install all bundles on first run
 if exists("s:first_run")
   BundleInstall
@@ -48,6 +56,7 @@ if exists("s:first_run")
 endif
 " enable ftplugins
 filetype plugin indent on
+" }}}
 
 " Mappings {{{1
 " =============
@@ -203,6 +212,19 @@ nmap lx <Plug>(Exchange)
 vmap x <Plug>(Exchange)
 nmap lxc <Plug>(ExchangeClear)
 nmap lxx <Plug>(ExchangeLine)
+
+" vim-commentary {{{2
+" -------------------
+xmap gc  <Plug>Commentary
+nmap gc  <Plug>Commentary
+omap gc  <Plug>Commentary
+nmap gcc <Plug>Commentary_
+
+" ag.vim {{{2
+" -----------
+let g:ag_apply_lmappings = 0
+let g:ag_apply_qmappings = 0
+
 " Style {{{1
 " ----------
 if has("gui_running") || exists("$TERM_PROGRAM") && $TERM_PROGRAM ==# "iTerm.app"
@@ -306,7 +328,7 @@ endif
 
 " source the .vimrc file on save to apply all changes immediately {{{2
 " --------------------------------------------------------------------
-autocmd! BufWritePost .vimrc source ~/.vimrc
+autocmd! BufWritePost .vimrc source ~/.vimrc | AirlineRefresh
 
 " edit dotfiles easily {{{2
 " -------------------------
