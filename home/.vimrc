@@ -12,7 +12,7 @@ endif
 
 filetype off                   " required!
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 " }}}
 
 " Plug-in list
@@ -42,6 +42,10 @@ Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'rking/ag.vim'
+Plugin 'chrisbra/csv.vim'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'michamos/vim-arxivist'
 " vim-scripts repos
 Plugin 'matchit.zip'
 " External git repo
@@ -54,6 +58,7 @@ if exists("s:first_run")
   BundleInstall
   echomsg "Restart Vim for the plugins to be available"
 endif
+call vundle#end()
 " enable ftplugins
 filetype plugin indent on
 " }}}
@@ -130,6 +135,12 @@ noremap <S-left> <C-w>H
 noremap <S-down> <C-w>J
 noremap <S-up> <C-w>K
 noremap <S-right> <C-w>L
+
+" Jump open fold when jumping with '[count]G'
+nnoremap <expr> G (v:count ? 'Gzv' : 'G')
+
+"Convenient to move to end of next fold and open it
+noremap <Leader>z zjzxzjk
 
 " Plug-ins configuration {{{1
 " ===========================
@@ -225,6 +236,13 @@ nmap gcc <Plug>Commentary_
 let g:ag_apply_lmappings = 0
 let g:ag_apply_qmappings = 0
 
+" vim-notes {{{2
+" --------------
+let g:notes_directories = ['~/Dropbox/notes']
+let g:notes_markdown_program = "hsmarkdown" "This is a drop-in replacement, requires to 'ln -s $(which pandoc) hsmarkdown'
+nnoremap <silent> <Leader>en :Note <c-r>=strftime("%F")<CR><CR>
+
+
 " Style {{{1
 " ----------
 if has("gui_running") || exists("$TERM_PROGRAM") && $TERM_PROGRAM ==# "iTerm.app"
@@ -271,7 +289,8 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
-noremap <silent> <Leader>n :nohlsearch<CR>
+" Use <C-L> instead from sensible.vim
+" noremap <silent> <Leader>n :nohlsearch<CR>
 
 " error displayed visually {{{2
 " -----------------------------
@@ -338,6 +357,11 @@ noremap <Leader>ev :split ~/.homesick/repos/dotfiles/home/.vimrc<CR>
 " Use Vim's builtin help easily {{{2
 " ----------------------------------
 set keywordprg=:help
+
+" vim-arxivist {{{1
+" =================
+let g:arxivist_dir="~/Dropbox/notes/"
+let g:arxivist_archive="hep-th"
 
 " modeline {{{1
 " vim: set foldmethod=marker et sw=2 sts=2:
