@@ -142,6 +142,9 @@ nnoremap <expr> G (v:count ? 'Gzv' : 'G')
 "Convenient to move to end of next fold and open it
 noremap <Leader>z zjzxzjk
 
+"Open the Arxivist journal
+noremap <Leader>a :Arxivist<CR>
+
 " Plug-ins configuration {{{1
 " ===========================
 
@@ -236,12 +239,15 @@ nmap gcc <Plug>Commentary_
 let g:ag_apply_lmappings = 0
 let g:ag_apply_qmappings = 0
 
-" vim-notes {{{2
-" --------------
-let g:notes_directories = ['~/Dropbox/notes']
-let g:notes_markdown_program = "hsmarkdown" "This is a drop-in replacement, requires to 'ln -s $(which pandoc) hsmarkdown'
-nnoremap <silent> <Leader>en :Note <c-r>=strftime("%F")<CR><CR>
 
+" vim-arxivist {{{2
+" -----------------
+let g:arxivist_dir="~/Dropbox/notes/"
+let g:arxivist_archive="hep-th"
+
+" vim-pandoc {{{2
+" ---------------
+let g:pandoc#folding#fdc=0
 
 " Style {{{1
 " ----------
@@ -357,11 +363,6 @@ noremap <Leader>ev :split ~/.homesick/repos/dotfiles/home/.vimrc<CR>
 " Use Vim's builtin help easily {{{2
 " ----------------------------------
 set keywordprg=:help
-
-" vim-arxivist {{{1
-" =================
-let g:arxivist_dir="~/Dropbox/notes/"
-let g:arxivist_archive="hep-th"
 
 " modeline {{{1
 " vim: set foldmethod=marker et sw=2 sts=2:
