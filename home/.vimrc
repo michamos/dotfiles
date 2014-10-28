@@ -37,7 +37,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'sjl/AnsiEsc.vim'
 Plugin 'pydave/renamer.vim'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'godlygeek/tabular'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'tommcdo/vim-exchange'
@@ -173,11 +173,11 @@ let g:tagbar_map_togglesort="k"
 " 			\ 'sort'    : 0
 " 			\ }
 let g:tagbar_type_bib = {
- 			\ 'ctagstype' : 'bibtex',
- 			\ 'kinds'     : [
- 			\ 'b:bibitems'
-                        \ ]
- 			\ }
+      \ 'ctagstype' : 'bibtex',
+      \ 'kinds'     : [
+      \ 'b:bibitems'
+      \ ]
+      \ }
 
 " vim-airline {{{2
 " ----------------
@@ -249,6 +249,12 @@ let g:arxivist_archive="hep-th"
 " ---------------
 let g:pandoc#folding#fdc=0
 
+" vim-easy-align {{{2
+" -------------------
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
+nmap <Leader><Enter> <Plug>(EasyAlign)
 " Style {{{1
 " ----------
 if has("gui_running") || exists("$TERM_PROGRAM") && $TERM_PROGRAM ==# "iTerm.app"
