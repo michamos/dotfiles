@@ -248,6 +248,7 @@ let g:arxivist_archive="hep-th"
 " vim-pandoc {{{2
 " ---------------
 let g:pandoc#folding#fdc=0
+let g:pandoc#keyboard#display_motions=0
 
 " vim-easy-align {{{2
 " -------------------
