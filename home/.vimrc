@@ -26,6 +26,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-sleuth'
@@ -185,20 +186,14 @@ let g:airline_powerline_fonts=1
 
 " fugitive {{{2
 " -------------
+let g:fugitive_git_executable = 'LANG=en git' "fugitive is not so good with translations
 noremap <Leader>g :Gstatus<CR>
 
 " latex {{{2
 " ----------
-" Latex-suite settings, not used any more {{{3 "
-"set grepprg=grep\ -nH\ $*
-"let g:Tex_DefaultTargetFormat='pdf'
-"let g:Imap_UsePlaceHolders=0 " on utilise ultisnips
-"" compilation automatique à chaque écriture du buffer
-"autocmd! BufWritePost *.tex silent call Tex_RunLaTeX()
-"" disable replacing of "é" with "\item"
-"imap <buffer> <Plug>deactivated_tex_item <Plug>Tex_InsertItemOnThisLine
-" 3}}} "
 let g:tex_flavor='latex'
+" remove sub/superscripts replacement with conceal
+let g:tex_conceal='abdgm'
 autocmd! BufWritePost * if &filetype=='tex' | silent call LatexBox_Latexmk(0) | endif
 if has("macunix")
   let g:LatexBox_viewer="open -a Skim"
