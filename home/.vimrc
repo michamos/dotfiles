@@ -304,6 +304,12 @@ set incsearch
 " -----------------------------
 set visualbell
 
+" disable mouse in insert mode {{{2
+" ---------------------------------
+"  the standard setting is responsible for mistakes when inadvertently
+"  touching the touchpad
+set mouse=nvc
+
 " status {{{2
 " -----------
 "set relativenumber
