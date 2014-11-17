@@ -259,6 +259,7 @@ endif
 if has("gui_running")
   set guioptions-=T " no buttons nor menus
   set guioptions-=m
+  set guioptions^=c " no gui dialog boxes
   if has("gui_gtk2")
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
   elseif has("gui_macvim")
@@ -336,10 +337,14 @@ set wildmode=longest:full,full
 " --------------------
 set undofile
 set undodir=$HOME/.vim/undodir
+if ! isdirectory(&undodir)
+  call mkdir(&undodir)
+endif
 
-" auto reload file if changed externally and buffer not modified {{{2
-" -------------------------------------------------------------------
+" changing buffers {{{2
+" ---------------------
 set autoread
+set confirm
 
 " generate ctags on each write {{{2
 " ---------------------------------
