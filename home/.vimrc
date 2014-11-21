@@ -4,64 +4,59 @@
 " Initialization {{{2
 " -------------------
 
-" install vundle if not yet installed
-if ! filereadable(expand("~/.vim/bundle/vundle/.git/HEAD"))
-  let s:first_run=1
-  !git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" install vim-plug if not yet installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  try | call mkdir($HOME . '/.vim/autoload', 'p') | catch /^Vim\%((\a\+)\)\=:E739/ | endtry
+  if executable('curl')
+    silent !curl -fLo ~/.vim/autoload/plug.vim
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall
+  else
+    autocmd VimEnter * echohl ErrorMsg | echomsg 'vim-plug: curl command not found, plugins will not be loaded' | echohl None
+  endif
 endif
 
-filetype off                   " required!
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
+call plug#begin('~/.vim/bundle')
 " }}}
 
 " Plug-in list
 " ------------
 " Github repositories
-Plugin 'gmarik/vundle'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-speeddating'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'sjl/gundo.vim'
-Plugin 'sjl/AnsiEsc.vim'
-Plugin 'pydave/renamer.vim'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'majutsushi/tagbar'
-Plugin 'bling/vim-airline'
-Plugin 'tommcdo/vim-exchange'
-Plugin 'rking/ag.vim'
-Plugin 'chrisbra/csv.vim'
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'michamos/vim-arxivist'
+Plug 'gmarik/vundle'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-speeddating'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'sjl/gundo.vim'
+Plug 'sjl/AnsiEsc.vim'
+Plug 'pydave/renamer.vim'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'junegunn/vim-easy-align'
+Plug 'majutsushi/tagbar'
+Plug 'bling/vim-airline'
+Plug 'tommcdo/vim-exchange'
+Plug 'rking/ag.vim'
+Plug 'chrisbra/csv.vim'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'michamos/vim-arxivist'
 " vim-scripts repos
-Plugin 'matchit.zip'
-" External git repo
-" Plugin 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+Plug 'matchit.zip'
 
 " More initialization {{{2
 " ------------------------
-" install all bundles on first run
-if exists("s:first_run")
-  BundleInstall
-  echomsg "Restart Vim for the plugins to be available"
-endif
-call vundle#end()
-" enable ftplugins
-filetype plugin indent on
+call plug#end()
 " }}}
 
 " Mappings {{{1
@@ -360,8 +355,8 @@ augroup END
 " -------------
 set spellfile=~/.vim/spell/myspell.utf-8.add
 set spell
-if exists("s:first_run")
-  execute "mkspell " . &spellfile
+if empty(glob(&spellfile))
+  silent execute "mkspell!"  &spellfile
 endif
 
 " source the .vimrc file on save to apply all changes immediately {{{2
