@@ -256,7 +256,12 @@ if has("gui_running")
   set guioptions-=m
   set guioptions^=c " no gui dialog boxes
   if has("gui_gtk2")
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+    if hostname() == 'shiva'
+      let s:fontsize = 14
+    else
+      let s:fontsize = 10
+    endif
+    execute 'set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ ' . s:fontsize
   elseif has("gui_macvim")
     set guifont=Menlo\ for\ Powerline:h12
   endif
