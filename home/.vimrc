@@ -1,5 +1,5 @@
-" Vundle configuration {{{1
-" =========================
+" Vim-Plug configuration {{{1
+" =======--==================
 
 " Initialization {{{2
 " -------------------
@@ -22,7 +22,6 @@ call plug#begin('~/.vim/bundle')
 " Plug-in list
 " ------------
 " Github repositories
-Plug 'gmarik/vundle'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-repeat'
@@ -51,6 +50,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'michamos/vim-arxivist'
+Plug 'ivanov/vim-ipython'
 " vim-scripts repos
 Plug 'matchit.zip'
 
