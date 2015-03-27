@@ -1,5 +1,5 @@
 " Vim-Plug configuration {{{1
-" =======--==================
+" ===========================
 
 " Initialization {{{2
 " -------------------
@@ -51,6 +51,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'michamos/vim-arxivist'
 Plug 'ivanov/vim-ipython'
+Plug 'junegunn/vim-peekaboo'
 " vim-scripts repos
 Plug 'matchit.zip'
 
@@ -83,13 +84,9 @@ xnoremap s gk
 noremap <Leader><Leader> :w<CR>
 
 " show some useful lists
-noremap <Leader># :ls<CR>:b<space>
+noremap <Leader>b :ls<CR>:b<space>
 noremap <Leader>' :marks<CR>
 noremap <Leader>" :registers<CR>
-
-" easily change buffers
-noremap <Leader>b :bprevious<CR>
-noremap <Leader>é :bnext<CR>
 
 " toggle the display of hidden characters (in 'listchars')
 noremap <silent> <Leader>cl :set list!<CR>
