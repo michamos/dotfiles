@@ -35,8 +35,9 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-speeddating'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'tpope/vim-afterimage'
+Plug 'SirVer/ultisnips', {'on' : []} "loaded on first InsertEnter by autocmd
+Plug 'honza/vim-snippets', {'on' : []} "loaded on first InsertEnter by autocmd
 Plug 'sjl/gundo.vim'
 Plug 'sjl/AnsiEsc.vim'
 Plug 'pydave/renamer.vim'
@@ -58,6 +59,10 @@ Plug 'matchit.zip'
 " More initialization {{{2
 " ------------------------
 call plug#end()
+augroup load_on_insert
+  autocmd!
+  autocmd InsertEnter * call plug#load('vim-snippets', 'ultisnips') | autocmd! load_on_insert
+augroup END
 " }}}
 
 " Mappings {{{1
