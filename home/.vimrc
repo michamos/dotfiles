@@ -111,7 +111,20 @@ noremap ' `
 noremap ` '
 
 " Use 'C'/'R' to operate on the current line rather than the screen
-noremap C ^
+" we want 'C' to alternate between firt non-blank character and start of line
+function! Caret(mode)
+  if(a:mode=='x')
+    normal! gv
+  endif
+  let pos = col('.')
+  normal! ^
+  if pos == col('.')
+    normal! 0
+  endif
+endfunction
+nnoremap <silent> C :call Caret('n')<CR>
+onoremap <silent> C :call Caret('o')<CR>
+xnoremap <silent> C :<c-u>call Caret('x')<CR>
 noremap R $
 
 " Use 'U' for redo, basic 'U' is useless
