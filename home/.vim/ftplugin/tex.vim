@@ -9,29 +9,20 @@ setl iskeyword+=:
 " do not break lines in the middle of words
 setl linebreak
 
-"forward search
+" forward search
 map <silent> <buffer> <Leader>ls :silent !~/bin/pdfviewer
-		\ "<C-R>=LatexBox_GetOutputFile()<CR>" <C-R>=line('.')<CR> "%:p" <CR>
+		\ "<C-R>=b:vimtex.out()<CR>" <C-R>=line('.')<CR> "%:p" <CR>
 
+" change clashing default mappings
+nmap <silent> <buffer> <leader>ts <plug>(vimtex-toggle-star)
+nmap <silent> <buffer> <leader>td <plug>(vimtex-toggle-delim)
+nmap <silent> <buffer> lse <plug>(vimtex-change-env)
+nmap <silent> <buffer> lsc <plug>(vimtex-change-cmd)
 
+" add alternative imaps
+imap <buffer> ^<space>  ^^
 
 " correct common mistakes
 iabbrev <buffer> i.e. i.e.\
 iabbrev <buffer> e.g. e.g.\
 iabbrev <buffer> lamdba lambda
-
-" Latex-suite settings, not used anymore
-" --------------------------------------
-"
-"" compile pdf with synctex support and add support for external viewer (Skim)
-"let g:Tex_DefaultTargetFormat='pdf'
-"let g:Tex_CompileRule_pdf="pdflatex -interaction=nonstopmode -synctex=1 $*"
-"let g:Tex_ViewRule_pdf="$HOME/bin/pdfviewer"
-"let g:Tex_TreatMacViewerAsUNIX=1
-"
-"" fix behaviour of quickfix
-"let g:Tex_GotoError=0
-"" disable replacing of "Ã©" with "\item"
-"imap <buffer> <Plug>deactivated_tex_item <Plug>Tex_InsertItemOnThisLine
-"" keymap to compile bibtex
-"noremap <buffer> <Leader>lb :!bibtex %:t:r.aux<CR>

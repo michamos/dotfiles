@@ -36,12 +36,12 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-afterimage'
-Plug 'SirVer/ultisnips', {'on' : []} "loaded on first InsertEnter by autocmd
-Plug 'honza/vim-snippets', {'on' : []} "loaded on first InsertEnter by autocmd
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'sjl/gundo.vim'
 Plug 'sjl/AnsiEsc.vim'
 Plug 'pydave/renamer.vim'
-Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'lervag/vimtex'
 Plug 'junegunn/vim-easy-align'
 Plug 'majutsushi/tagbar'
 Plug 'bling/vim-airline'
@@ -59,10 +59,6 @@ Plug 'matchit.zip'
 " More initialization {{{2
 " ------------------------
 call plug#end()
-augroup load_on_insert
-  autocmd!
-  autocmd InsertEnter * call plug#load('vim-snippets', 'ultisnips') | autocmd! load_on_insert
-augroup END
 " }}}
 
 " Mappings {{{1
@@ -70,6 +66,7 @@ augroup END
 
 "Use a more accessible key as <Leader>, <Space> is redundant by default
 let mapleader = "\<Space>"
+let maplocalleader = mapleader
 " remap keyboard to use the bépo layout (http://www.bepo.fr)
 runtime bepo.vim
 
@@ -191,18 +188,22 @@ noremap <Leader>g :Gstatus<CR>
 let g:tex_flavor='latex'
 " remove sub/superscripts replacement with conceal
 let g:tex_conceal='abdgm'
-autocmd! BufWritePost * if &filetype=='tex' | silent call LatexBox_Latexmk(0) | endif
-if has("macunix")
-  let g:LatexBox_viewer="open -a Skim"
-elseif has("unix") "assuming linux if not OSX
-  let g:LatexBox_viewer="xdg-open"
-endif
-let g:LatexBox_show_warnings=1 "also show warnings
-let g:LatexBox_ignore_warnings=['Underfull', 'Overfull', 'specifier changed to', 'defernumbers']
-let g:LatexBox_Folding=1
-let g:LatexBox_latexmk_options="-pdflatex='pdflatex -synctex=1 \%O \%S'"
-let g:LatexBox_latexmk_async=1
-let g:LatexBox_quickfix=2 "do not jump to quickfix window
+let g:vimtex_latexmk_continuous=0
+let g:vimtex_latexmk_background=1
+let g:vimtex_latexmk_options="-pdflatex='pdflatex -synctex=1 \\%O \\%S'"
+let g:vimtex_imaps_leader='’'
+autocmd! BufWritePost * if &filetype=='tex' | call vimtex#latexmk#compile() | endif
+" if has("macunix")
+"   let g:LatexBox_viewer="open -a Skim"
+" elseif has("unix") "assuming linux if not OSX
+"   let g:LatexBox_viewer="xdg-open"
+" endif
+" let g:LatexBox_show_warnings=1 "also show warnings
+" let g:LatexBox_ignore_warnings=['Underfull', 'Overfull', 'specifier changed to', 'defernumbers']
+" let g:LatexBox_Folding=1
+" let g:LatexBox_latexmk_options="-pdflatex='pdflatex -synctex=1 \%O \%S'"
+" let g:LatexBox_latexmk_async=1
+" let g:LatexBox_quickfix=2 "do not jump to quickfix window
 
 " ultisnips {{{2
 " --------------
