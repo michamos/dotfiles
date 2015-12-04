@@ -274,6 +274,7 @@ if has("gui_running")
   if has("gui_gtk2")
     if hostname() == 'shiva'
       let s:fontsize = 14
+      set guioptions-=L "workaround for cursor disappearing bug
     else
       let s:fontsize = 10
     endif
