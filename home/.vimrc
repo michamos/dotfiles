@@ -51,6 +51,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'michamos/vim-arxivist'
+Plug 'michamos/vim-bepo'
 Plug 'ivanov/vim-ipython'
 Plug 'junegunn/vim-peekaboo'
 " vim-scripts repos
@@ -67,8 +68,6 @@ call plug#end()
 "Use a more accessible key as <Leader>, <Space> is redundant by default
 let mapleader = "\<Space>"
 let maplocalleader = mapleader
-" remap keyboard to use the bépo layout (http://www.bepo.fr)
-runtime bepo.vim
 
 " other convenient mappings {{{2
 " ------------------------------
