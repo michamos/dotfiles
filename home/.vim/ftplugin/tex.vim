@@ -18,11 +18,13 @@ nmap <silent> <buffer> <leader>ts <plug>(vimtex-toggle-star)
 nmap <silent> <buffer> <leader>td <plug>(vimtex-toggle-delim)
 nmap <silent> <buffer> lse <plug>(vimtex-change-env)
 nmap <silent> <buffer> lsc <plug>(vimtex-change-cmd)
-
-" add alternative imaps
-imap <buffer> ^<space>  ^^
+" define yse, yse mappings, see vimtex-faq-surround
+let b:surround_{char2nr("e")}
+  \ = "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}"
+let b:surround_{char2nr("c")} = "\\\1command: \1{\r}"
 
 " correct common mistakes
 iabbrev <buffer> i.e. i.e.\
 iabbrev <buffer> e.g. e.g.\
 iabbrev <buffer> lamdba lambda
+
