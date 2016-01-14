@@ -44,7 +44,7 @@ Plug 'pydave/renamer.vim'
 Plug 'lervag/vimtex'
 Plug 'junegunn/vim-easy-align'
 Plug 'majutsushi/tagbar'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'tommcdo/vim-exchange'
 Plug 'rking/ag.vim'
 Plug 'chrisbra/csv.vim'
@@ -228,7 +228,7 @@ let g:UltiSnipsDontReverseSearchPath="1" "necessary to make overrides work corre
 " vim-exchange {{{2
 " -----------------
 nmap lx <Plug>(Exchange)
-vmap x <Plug>(Exchange)
+xmap X <Plug>(Exchange)
 nmap lxc <Plug>(ExchangeClear)
 nmap lxx <Plug>(ExchangeLine)
 
@@ -238,6 +238,7 @@ xmap gc  <Plug>Commentary
 nmap gc  <Plug>Commentary
 omap gc  <Plug>Commentary
 nmap gcc <Plug>Commentary_
+nmap gcu <Plug>Commentary<Plug>Commentary
 
 " ag.vim {{{2
 " -----------
@@ -263,6 +264,10 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap <Leader><Enter> <Plug>(EasyAlign)
 " Style {{{1
 " ----------
+if has("nvim")
+  autocmd! VimEnter * colorscheme solarized | AirlineTheme solarized
+  set title
+endif
 if has("gui_running") || exists("$TERM_PROGRAM") && $TERM_PROGRAM ==# "iTerm.app"
   colorscheme solarized
 endif
