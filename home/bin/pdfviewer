@@ -1,0 +1,9 @@
+#!/bin/bash
+#Evince likes to use DBUS to do forward/backward search.
+#This is annoying, so we use the synctex command to extract the page number
+if [ -z $2 ] #Is a line number provided ?
+  then evince $1
+  else synctex view -i $(($2+1)):0:$3 -o $1 -x "evince -p %{page+1} %{output}" &
+fi
+
+
