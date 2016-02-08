@@ -44,6 +44,7 @@ Plug 'lervag/vimtex'
 Plug 'junegunn/vim-easy-align'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tommcdo/vim-exchange'
 Plug 'rking/ag.vim'
 Plug 'chrisbra/csv.vim'
@@ -202,19 +203,9 @@ let g:tex_conceal='abdgm'
 let g:vimtex_latexmk_continuous=0
 let g:vimtex_latexmk_background=1
 let g:vimtex_latexmk_options="-pdflatex='pdflatex -synctex=1 \\%O \\%S'"
+let g:vimtex_view_method = 'zathura'
 let g:vimtex_imaps_leader='’'
 autocmd! BufWritePost * if &filetype=='tex' | call vimtex#latexmk#compile() | endif
-" if has("macunix")
-"   let g:LatexBox_viewer="open -a Skim"
-" elseif has("unix") "assuming linux if not OSX
-"   let g:LatexBox_viewer="xdg-open"
-" endif
-" let g:LatexBox_show_warnings=1 "also show warnings
-" let g:LatexBox_ignore_warnings=['Underfull', 'Overfull', 'specifier changed to', 'defernumbers']
-" let g:LatexBox_Folding=1
-" let g:LatexBox_latexmk_options="-pdflatex='pdflatex -synctex=1 \%O \%S'"
-" let g:LatexBox_latexmk_async=1
-" let g:LatexBox_quickfix=2 "do not jump to quickfix window
 
 " ultisnips {{{2
 " --------------
@@ -388,10 +379,11 @@ endif
 " --------------------------------------------------------------------
 autocmd! BufWritePost .vimrc source ~/.vimrc | AirlineRefresh
 
-" edit dotfiles easily {{{2
+" edit vim config easily {{{2
 " -------------------------
 noremap <Leader>ed :split ~/.homesick/repos/dotfiles/home/<CR>
 noremap <Leader>ev :split ~/.homesick/repos/dotfiles/home/.vimrc<CR>
+command! -bang Ftedit execute "edit ~/.homesick/repos/dotfiles/home/.vim/" . (<q-bang> == '!' ? "after/" : "") . "ftplugin/" . &filetype . ".vim"
 
 " Use Vim's builtin help easily {{{2
 " ----------------------------------

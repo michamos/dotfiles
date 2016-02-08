@@ -14,8 +14,8 @@ map <silent> <buffer> <Leader>ls :silent !~/bin/pdfviewer
 		\ "<C-R>=b:vimtex.out()<CR>" <C-R>=line('.')<CR> "%:p" <CR>
 
 " change clashing default mappings
-nmap <silent> <buffer> <leader>* <plug>(vimtex-toggle-star)
-nmap <silent> <buffer> <leader>% <plug>(vimtex-toggle-delim)
+nmap <silent> <buffer> <leader>* <plug>(vimtex-env-toggle-star)
+nmap <silent> <buffer> <leader>% <plug>(vimtex-delim-toggle-modifier)
 nmap <silent> <buffer> lse <plug>(vimtex-change-env)
 nmap <silent> <buffer> lsc <plug>(vimtex-change-cmd)
 " define yse, yse mappings, see vimtex-faq-surround
