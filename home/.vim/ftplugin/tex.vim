@@ -16,8 +16,9 @@ map <silent> <buffer> <Leader>ls :silent !~/bin/pdfviewer
 " change clashing default mappings
 nmap <silent> <buffer> <leader>* <plug>(vimtex-env-toggle-star)
 nmap <silent> <buffer> <leader>% <plug>(vimtex-delim-toggle-modifier)
-nmap <silent> <buffer> lse <plug>(vimtex-change-env)
-nmap <silent> <buffer> lsc <plug>(vimtex-change-cmd)
+nmap <silent> <buffer> lse <plug>(vimtex-env-change)
+nmap <silent> <buffer> ls$ <plug>(vimtex-env-change-math)
+nmap <silent> <buffer> lsc <plug>(vimtex-cmd-change)
 " define yse, yse mappings, see vimtex-faq-surround
 let b:surround_{char2nr("e")}
   \ = "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}"
