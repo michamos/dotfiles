@@ -23,6 +23,7 @@ call plug#begin('~/.vim/bundle')
 " ------------
 " Github repositories
 Plug 'altercation/vim-colors-solarized'
+Plug 'romainl/flattened'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -254,12 +255,9 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap <Leader><Enter> <Plug>(EasyAlign)
 " Style {{{1
 " ----------
-if has("nvim")
-  autocmd! VimEnter * colorscheme solarized | AirlineTheme solarized
-  set title
-endif
-if has("gui_running") || exists("$TERM_PROGRAM") && $TERM_PROGRAM ==# "iTerm.app"
-  colorscheme solarized
+set title
+if has("gui_running") || exists("$TERM_PROGRAM") && $TERM_PROGRAM ==# "iTerm.app" || $NVIM_TUI_ENABLE_TRUE_COLOR
+  autocmd! VimEnter * colorscheme flattened_light | AirlineTheme solarized
 endif
 if has("gui_running")
   set guioptions-=T " no buttons nor menus
