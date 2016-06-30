@@ -1,1 +1,1 @@
-set commentstring=>\ %s "for use with vim-commentary
+setlocal commentstring=>%s "for use with vim-commentary

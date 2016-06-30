@@ -47,7 +47,7 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tommcdo/vim-exchange'
-Plug 'rking/ag.vim'
+Plug 'mhinz/vim-grepper'
 Plug 'chrisbra/csv.vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -231,11 +231,10 @@ omap gc  <Plug>Commentary
 nmap gcc <Plug>Commentary_
 nmap gcu <Plug>Commentary<Plug>Commentary
 
-" ag.vim {{{2
-" -----------
-let g:ag_apply_lmappings = 0
-let g:ag_apply_qmappings = 0
-
+" vim-grepper {{{2
+" ----------------
+let g:grepper= { 'tools': ['ag', 'git', 'grep'] }
+command! -nargs=* Ag Grepper -noprompt -tool ag -query <args>
 
 " vim-arxivist {{{2
 " -----------------
@@ -266,6 +265,7 @@ if has("gui_running")
   if has("gui_gtk2")
     if hostname() == 'shiva'
       let s:fontsize = 14
+      set linespace=2 "workaround for disappearing underscores
       set guioptions-=L "workaround for cursor disappearing bug
     else
       let s:fontsize = 10
@@ -381,7 +381,7 @@ autocmd! BufWritePost .vimrc source ~/.vimrc | AirlineRefresh
 " -------------------------
 noremap <Leader>ed :split ~/.homesick/repos/dotfiles/home/<CR>
 noremap <Leader>ev :split ~/.homesick/repos/dotfiles/home/.vimrc<CR>
-command! -bang Ftedit execute "edit ~/.homesick/repos/dotfiles/home/.vim/" . (<q-bang> == '!' ? "after/" : "") . "ftplugin/" . &filetype . ".vim"
+command! -bang -nargs=? Ftedit execute "edit ~/.homesick/repos/dotfiles/home/.vim/" . (<q-bang> ==# '!' ? "after/" : "") . "ftplugin/" . (<q-args> ==# '' ? &filetype : <q-args>) . ".vim"
 
 " Use Vim's builtin help easily {{{2
 " ----------------------------------
