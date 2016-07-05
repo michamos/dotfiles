@@ -13,9 +13,23 @@ setl linebreak
 map <silent> <buffer> <Leader>ls :silent !~/bin/pdfviewer
 		\ "<C-R>=b:vimtex.out()<CR>" <C-R>=line('.')<CR> "%:p" <CR>
 
+"compiling
+if executable('latexrun')
+  compiler latexrun
+  let s:compiler_call='cd %:p:h | Make'
+else
+  let s:compiler_call='call vimtex#latexmk#compile()'
+endif
+augroup tex_auto_compile
+  autocmd!
+  execute 'autocmd BufWritePost <buffer>' s:compiler_call
+augroup END
+
+
 " change clashing default mappings
 nmap <silent> <buffer> <leader>* <plug>(vimtex-env-toggle-star)
 nmap <silent> <buffer> <leader>% <plug>(vimtex-delim-toggle-modifier)
+vmap <silent> <buffer> <leader>% <plug>(vimtex-delim-toggle-modifier)
 nmap <silent> <buffer> lse <plug>(vimtex-env-change)
 nmap <silent> <buffer> ls$ <plug>(vimtex-env-change-math)
 nmap <silent> <buffer> lsc <plug>(vimtex-cmd-change)
