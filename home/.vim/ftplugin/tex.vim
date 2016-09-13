@@ -16,7 +16,7 @@ map <silent> <buffer> <Leader>ls :silent !~/bin/pdfviewer
 "compiling
 if executable('latexrun')
   compiler latexrun
-  let s:compiler_call='cd %:p:h | Make'
+  let s:compiler_call='cd %:p:h | execute "Make" b:vimtex.tex'
 else
   let s:compiler_call='call vimtex#latexmk#compile()'
 endif
