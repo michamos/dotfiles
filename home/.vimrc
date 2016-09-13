@@ -56,6 +56,7 @@ Plug 'michamos/vim-arxivist'
 Plug 'michamos/vim-bepo'
 Plug 'ivanov/vim-ipython'
 Plug 'junegunn/vim-peekaboo'
+Plug 'ledger/vim-ledger'
 " vim-scripts repos
 Plug 'matchit.zip'
 
@@ -263,7 +264,7 @@ if has("gui_running")
   set guioptions-=T " no buttons nor menus
   set guioptions-=m
   set guioptions^=c " no gui dialog boxes
-  if has("gui_gtk2")
+  if has("gui_gtk2") || has("gui_gtk3")
     if hostname() == 'shiva'
       let s:fontsize = 14
       set linespace=2 "workaround for disappearing underscores
