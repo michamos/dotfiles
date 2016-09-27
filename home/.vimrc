@@ -236,7 +236,6 @@ nmap gcu <Plug>Commentary<Plug>Commentary
 " vim-grepper {{{2
 " ----------------
 let g:grepper= { 'tools': ['ag', 'git', 'grep'] }
-command! -nargs=* Ag Grepper -noprompt -tool ag -query <args>
 
 " vim-arxivist {{{2
 " -----------------
@@ -257,6 +256,7 @@ nmap <Leader><Enter> <Plug>(EasyAlign)
 " Style {{{1
 " ----------
 set title
+set termguicolors
 if has("gui_running") || exists("$TERM_PROGRAM") && $TERM_PROGRAM ==# "iTerm.app" || $NVIM_TUI_ENABLE_TRUE_COLOR
   autocmd! VimEnter * colorscheme flattened_light | AirlineTheme solarized
 endif
