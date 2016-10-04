@@ -256,7 +256,7 @@ nmap <Leader><Enter> <Plug>(EasyAlign)
 " Style {{{1
 " ----------
 set title
-set termguicolors
+if has("termguicolors") | set termguicolors | endif
 if has("gui_running") || exists("$TERM_PROGRAM") && $TERM_PROGRAM ==# "iTerm.app" || $NVIM_TUI_ENABLE_TRUE_COLOR
   autocmd! VimEnter * colorscheme flattened_light | AirlineTheme solarized
 endif
