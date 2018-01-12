@@ -54,11 +54,16 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'michamos/vim-arxivist'
 Plug 'michamos/vim-bepo'
-Plug 'ivanov/vim-ipython'
+Plug 'wilywampa/vim-ipython'
+Plug 'davidhalter/jedi-vim'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'tweekmonster/braceless.vim'
+Plug 'jmcantrell/vim-virtualenv'
 Plug 'junegunn/vim-peekaboo'
 Plug 'ledger/vim-ledger'
-" vim-scripts repos
-Plug 'matchit.zip'
+Plug 'w0rp/ale'
+Plug 'vim-scripts/matchit.zip'
+Plug 'leafgarland/typescript-vim'
 
 " More initialization {{{2
 " ------------------------
@@ -113,7 +118,7 @@ noremap ' `
 noremap ` '
 
 " Use 'C'/'R' to operate on the current line rather than the screen
-" we want 'C' to alternate between firt non-blank character and start of line
+" we want 'C' to alternate between first non-blank character and start of line
 function! Caret(mode)
   if(a:mode=='x')
     normal! gv
@@ -160,6 +165,9 @@ noremap <Leader>a :Arxivist<CR>
 
 " gundo {{{2
 " ----------
+if has('python3')
+    let g:gundo_prefer_python3 = 1          " anything else breaks on Ubuntu 16.04+
+endif
 nnoremap <silent> <Leader>u :GundoToggle<CR>
 let g:gundo_map_move_older="t"
 let g:gundo_map_move_newer="s"
@@ -233,6 +241,15 @@ omap gc  <Plug>Commentary
 nmap gcc <Plug>Commentary_
 nmap gcu <Plug>Commentary<Plug>Commentary
 
+" vim-braceless {{{2
+" ------------------
+
+augroup vimrc_braceless
+  autocmd!
+  autocmd FileType python BracelessEnable +highlight
+augroup END
+highlight! link BracelessIndent ColorColumn
+
 " vim-grepper {{{2
 " ----------------
 let g:grepper= { 'tools': ['ag', 'git', 'grep'] }
@@ -253,6 +270,12 @@ let g:pandoc#keyboard#display_motions=0
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
 nmap <Leader><Enter> <Plug>(EasyAlign)
+
+" ale {{2
+" -------
+" Quickly jump to previous/next linter warning
+nmap [l <Plug>(ale_previous_wrap)
+nmap ]l <Plug>(ale_next_wrap)
 " Style {{{1
 " ----------
 set title
