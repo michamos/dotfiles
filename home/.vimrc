@@ -22,8 +22,7 @@ call plug#begin('~/.vim/bundle')
 " Plug-in list
 " ------------
 " Github repositories
-Plug 'altercation/vim-colors-solarized'
-Plug 'romainl/flattened'
+Plug 'lifepillar/vim-solarized8'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -54,7 +53,6 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'michamos/vim-arxivist'
 Plug 'michamos/vim-bepo'
-Plug 'wilywampa/vim-ipython'
 Plug 'davidhalter/jedi-vim'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'tweekmonster/braceless.vim'
@@ -64,6 +62,7 @@ Plug 'ledger/vim-ledger'
 Plug 'w0rp/ale'
 Plug 'vim-scripts/matchit.zip'
 Plug 'leafgarland/typescript-vim'
+Plug 'junegunn/fzf', { 'dir': '~/.local/share/fzf' }
 
 " More initialization {{{2
 " ------------------------
@@ -279,9 +278,11 @@ nmap ]l <Plug>(ale_next_wrap)
 " Style {{{1
 " ----------
 set title
-if has("termguicolors") | set termguicolors | endif
-if has("gui_running") || exists("$TERM_PROGRAM") && $TERM_PROGRAM ==# "iTerm.app" || $NVIM_TUI_ENABLE_TRUE_COLOR
-  autocmd! VimEnter * colorscheme flattened_light | AirlineTheme solarized
+if has("termguicolors")
+  set termguicolors
+endif
+if has("gui_running") || has("termguicolors")
+  autocmd! VimEnter * colorscheme solarized8 | AirlineTheme solarized
 endif
 if has("gui_running")
   set guioptions-=T " no buttons nor menus
