@@ -28,6 +28,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-commentary'
@@ -251,7 +252,7 @@ highlight! link BracelessIndent ColorColumn
 
 " vim-grepper {{{2
 " ----------------
-let g:grepper= { 'tools': ['ag', 'git', 'grep'] }
+let g:grepper= { 'tools': ['rg', 'ag', 'git', 'grep'] }
 
 " vim-arxivist {{{2
 " -----------------
@@ -275,6 +276,30 @@ nmap <Leader><Enter> <Plug>(EasyAlign)
 " Quickly jump to previous/next linter warning
 nmap [l <Plug>(ale_previous_wrap)
 nmap ]l <Plug>(ale_next_wrap)
+
+" fzf {{{2
+" --------
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Hide terminal status bar
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+map <silent> <leader>f :FZF<CR>
 " Style {{{1
 " ----------
 set title
