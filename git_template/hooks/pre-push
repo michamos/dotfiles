@@ -1,0 +1,18 @@
+#!/bin/bash
+repo="$1"
+url="$2"
+
+if [[ $url == *github.com* ]]
+then
+    if [[ $url == git@github.com* ]]
+	then
+	    # Using SSH protocol, transforming into proper URL
+	    url="https://github.com/${url##git@github.com:}"
+    fi
+
+    branch="$(git rev-parse --abbrev-ref HEAD)"
+    url="${url%%.git}/compare/$branch?expand=1"
+    echo ""
+    echo "Create PR at: $url"
+    echo ""
+fi
