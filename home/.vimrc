@@ -64,6 +64,9 @@ Plug 'w0rp/ale'
 Plug 'vim-scripts/matchit.zip'
 Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.local/share/fzf' }
+Plug 'vim-python/python-syntax'
+Plug 'diepm/vim-rest-console'
+Plug 'tsandall/vim-rego'
 
 " More initialization {{{2
 " ------------------------
@@ -246,7 +249,7 @@ nmap gcu <Plug>Commentary<Plug>Commentary
 
 augroup vimrc_braceless
   autocmd!
-  autocmd FileType python BracelessEnable +highlight
+  autocmd FileType python,yaml BracelessEnable +highlight
 augroup END
 highlight! link BracelessIndent ColorColumn
 
@@ -300,6 +303,14 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 map <silent> <leader>f :FZF<CR>
+
+" vim-rest-console {{{2
+" ---------------------
+let g:vrc_set_default_mapping = 0
+let g:vrc_curl_opts = {
+  \ '-sSi': '',
+  \}
+command! HTTPRequest :call VrcQuery()
 " Style {{{1
 " ----------
 set title
@@ -437,6 +448,18 @@ command! -bang -nargs=? Ftedit execute "edit ~/.homesick/repos/dotfiles/home/.vi
 " Use Vim's builtin help easily {{{2
 " ----------------------------------
 set keywordprg=:help
+
+" Load ctags from git dir {{{2
+" ----------------------------
+set tags^=./.git/tags;
+
+" When in a terminal, use parent vim as editor {{{2
+" -------------------------------------------------
+if has ('nvim') && executable('nvr')
+  let $EDITOR = 'nvr -cc split --remote-wait'
+  let $VISUAL = $EDITOR
+  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+endif
 
 " modeline {{{1
 " vim: set foldmethod=marker et sw=2 sts=2:
