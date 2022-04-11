@@ -42,7 +42,6 @@ Plug 'honza/vim-snippets'
 Plug 'sjl/gundo.vim'
 Plug 'sjl/AnsiEsc.vim'
 Plug 'lervag/vimtex'
-Plug 'https://gist.github.com/e2a04fa526cace641167ce830f7b4f86.git', { 'dir': '~/.vim/bundle/vim-latexrun/', 'do': 'mkdir compiler; cp latexrun.vim compiler/' }
 Plug 'junegunn/vim-easy-align'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
@@ -60,13 +59,14 @@ Plug 'tweekmonster/braceless.vim'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'junegunn/vim-peekaboo'
 Plug 'ledger/vim-ledger'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'vim-scripts/matchit.zip'
 Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.local/share/fzf' }
 Plug 'vim-python/python-syntax'
 Plug 'diepm/vim-rest-console'
 Plug 'tsandall/vim-rego'
+Plug 'cespare/vim-toml'
 
 " More initialization {{{2
 " ------------------------
@@ -214,7 +214,7 @@ noremap <Leader>g :Gstatus<CR>
 let g:tex_flavor='latex'
 " remove sub/superscripts replacement with conceal
 let g:tex_conceal='abdgm'
-let g:vimtex_latexmk_enabled=0
+let g:vimtex_compiler_method='latexrun'
 " let g:vimtex_latexmk_continuous=0
 " let g:vimtex_latexmk_background=1
 " let g:vimtex_latexmk_options="-pdflatex='pdflatex -synctex=1 \\%O \\%S'"

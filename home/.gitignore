@@ -3,6 +3,7 @@
 *.un~
 Session.vim
 .netrwhist
+tags
 
 # OSX files
 .DS_Store

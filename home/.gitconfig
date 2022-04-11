@@ -20,3 +20,5 @@
 
 [push]
 	default = simple
+[http]
+	emptyAuth = true
