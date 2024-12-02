@@ -5,10 +5,10 @@
 " -------------------
 
 " install vim-plug if not yet installed
-if empty(glob('~/config/nvim/autoload/plug.vim'))
-  try | call mkdir($HOME . '/config/nvim/autoload', 'p') | catch /^Vim\%((\a\+)\)\=:E739/ | endtry
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  try | call mkdir($HOME . '/.config/nvim/autoload', 'p') | catch /^Vim\%((\a\+)\)\=:E739/ | endtry
   if executable('curl')
-    silent !curl -fLo ~/.vim/autoload/plug.vim
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall
   else
