@@ -1,92 +1,86 @@
 require('config.lazy')
+
+-- Mappings {{{1
+-- =============
+
+-- other convenient mappings {{{2
+-- ------------------------------
+
+-- move by displayed line
+vim.keymap.set({'n', 'x'}, 't', 'gj')
+vim.keymap.set({'n', 'x'}, 's', 'gk')
+
+-- write the buffer more easily
+vim.keymap.set('n', '<Leader><Leader>', ':w<CR>')
+
+-- show some useful lists
+vim.keymap.set('n', '<Leader>b', ':ls<CR>:b<space>')
+vim.keymap.set('n', '<Leader>\'', ':marks<CR>')
+vim.keymap.set('n', '<Leader>"', ':registers<CR>')
+
+-- toggle the display of hidden characters (in 'listchars')
+vim.keymap.set('n', '<Leader>cl', ':set list!<CR>', { silent = true })
+
+-- cd to the directory of the current file
+vim.keymap.set('n', '<Leader>cd', ':cd %:p:h<CR>', { silent = true })
+
+-- '<Esc>' is far away, use '<C-Space>' instead
+vim.keymap.set({'n', 'x', 'o', 'i'}, '<C-Space>', '<Esc>')
+vim.keymap.set({'c', 's'}, '<C-Space>', '<C-C>')
+
+-- Use ' to go to the exact mark, since it is more accessible
+vim.keymap.set({'n', 'x', 'o'}, "'", '`')
+vim.keymap.set({'n', 'x', 'o'}, '`', "'")
+
+-- Use 'C'/'R' to operate on the current line rather than the screen
+-- we want 'C' to alternate between first non-blank character and start of line
+
+local caret = function(mode)
+  local inner = function()
+    if mode == 'x' then
+      vim.cmd [[normal! gv]]
+    end
+    local pos = vim.fn.col('.')
+    vim.cmd [[normal! ^]]
+    if pos == vim.fn.col('.') then
+      vim.cmd [[normal! 0]]
+    end
+  end
+  return inner
+end
+
+vim.keymap.set({'n', 'o'}, 'C',  caret('n'), { silent = true})
+vim.keymap.set('x', 'C', caret('x'), { silent = true})
+vim.keymap.set({'n', 'x', 'o'}, 'R', '$')
+
+-- Use 'U' for redo, basic 'U' is useless
+vim.keymap.set('n', 'U', '<C-r>')
+
+-- '*' is far away, we use 'M' to put the word under the cursor in the search
+-- register, then we can move with 'n'/'N'
+vim.keymap.set({'n', 'x', 'o'}, 'M', [[:silent! execute "normal! *\<C-o>"<CR>]])
+
+-- Directional arrows operate on windows
+vim.keymap.set('n', '<left>', '<C-w>h')
+vim.keymap.set('n', '<down>', '<C-w>j')
+vim.keymap.set('n', '<up>', '<C-w>k')
+vim.keymap.set('n', '<right>', '<C-w>l')
+vim.keymap.set('n', '<S-left>', '<C-w>H')
+vim.keymap.set('n', '<S-down>', '<C-w>J')
+vim.keymap.set('n', '<S-up>', '<C-w>K')
+vim.keymap.set('n', '<S-right>', '<C-w>L')
+
+-- Jump open fold when jumping with '[count]G'
+vim.keymap.set('n', 'G', function() if vim.v.count ~= 0 then return 'Gzv' else return 'G' end end, { expr = true })
+
+-- Convenient to move to end of next fold and open it
+vim.keymap.set('n', '<Leader>z', 'zjzxzjk')
+
+-- Yank all buffer to system clipboard as HTML using pandoc
+vim.keymap.set('n', '<Leader>y', [[:<C-u>silent! w ! pandoc -t html \| wl-copy -t text/html<CR>]], { silent = true })
+
+
 vim.cmd [[
-
-" Mappings {{{1
-" =============
-
-" other convenient mappings {{{2
-" ------------------------------
-
-" 'Y' is consistent with other mappings, copies to end of line
-noremap Y y$
-
-" move by displayed line
-nnoremap t gj
-nnoremap s gk
-xnoremap t gj
-xnoremap s gk
-
-" write the buffer more easily
-noremap <Leader><Leader> :w<CR>
-
-" show some useful lists
-noremap <Leader>b :ls<CR>:b<space>
-noremap <Leader>' :marks<CR>
-noremap <Leader>" :registers<CR>
-
-" toggle the display of hidden characters (in 'listchars')
-noremap <silent> <Leader>cl :set list!<CR>
-
-" cd to the directory of the current file
-noremap <silent> <Leader>cd :cd %:p:h<CR>
-
-" '<Esc>' is far away, use '<C-Space>' instead
-noremap <C-Space> <Esc>
-inoremap <C-Space> <Esc>
-cnoremap <C-Space> <C-C>
-snoremap <C-Space> <C-C>
-map <Nul> <C-Space>
-imap <Nul> <C-Space>
-cmap <Nul> <C-Space>
-smap <Nul> <C-Space>
-
-" Use ' to go to the exact mark, since it is more accessible
-noremap ' `
-noremap ` '
-
-" Use 'C'/'R' to operate on the current line rather than the screen
-" we want 'C' to alternate between first non-blank character and start of line
-function! Caret(mode)
-  if(a:mode=='x')
-    normal! gv
-  endif
-  let pos = col('.')
-  normal! ^
-  if pos == col('.')
-    normal! 0
-  endif
-endfunction
-nnoremap <silent> C :call Caret('n')<CR>
-onoremap <silent> C :call Caret('o')<CR>
-xnoremap <silent> C :<c-u>call Caret('x')<CR>
-noremap R $
-
-" Use 'U' for redo, basic 'U' is useless
-noremap U <C-r>
-
-" '*' is far away, we use 'M' to put the word under the cursor in the search
-" register, then we can move with 'n'/'N'
-noremap <silent> M :silent! execute "normal! *\<C-o>"<CR>
-
-" Directional arrows operate on windows
-noremap <left> <C-w>h
-noremap <down> <C-w>j
-noremap <up> <C-w>k
-noremap <right> <C-w>l
-noremap <S-left> <C-w>H
-noremap <S-down> <C-w>J
-noremap <S-up> <C-w>K
-noremap <S-right> <C-w>L
-
-" Jump open fold when jumping with '[count]G'
-nnoremap <expr> G (v:count ? 'Gzv' : 'G')
-
-"Convenient to move to end of next fold and open it
-noremap <Leader>z zjzxzjk
-
-"Yank all buffer to system clipboard as HTML using pandoc
-noremap <silent> <Leader>y :<C-u>silent! w ! pandoc -t html \| wl-copy -t text/html<CR>
-
 " Plug-ins configuration {{{1
 " ===========================
 
