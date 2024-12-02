@@ -1,3 +1,5 @@
+vim.cmd [[
+
 " Vim-Plug configuration {{{1
 " ===========================
 
@@ -461,5 +463,7 @@ if has ('nvim') && executable('nvr')
   autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
 endif
 
-" modeline {{{1
-" vim: set foldmethod=marker et sw=2 sts=2:
+]]
+
+-- modeline {{{1
+-- vim: set foldmethod=marker et sw=2 sts=2:
