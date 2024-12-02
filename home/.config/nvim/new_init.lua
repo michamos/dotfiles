@@ -1,12 +1,13 @@
-vim.cmd[[" Vim-Plug configuration {{{1
+vim.cmd[[
+" Vim-Plug configuration {{{1
 " ===========================
 
 " Initialization {{{2
 " -------------------
 
 " install vim-plug if not yet installed
-if empty(glob('~/.vim/autoload/plug.vim'))
-  try | call mkdir($HOME . '/.vim/autoload', 'p') | catch /^Vim\%((\a\+)\)\=:E739/ | endtry
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  try | call mkdir($HOME . '/.config/nvim/autoload', 'p') | catch /^Vim\%((\a\+)\)\=:E739/ | endtry
   if executable('curl')
     silent !curl -fLo ~/.vim/autoload/plug.vim
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -16,7 +17,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   endif
 endif
 
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/.config/nvim/bundle')
 " }}}
 
 " Plug-in list
@@ -462,5 +463,5 @@ if has ('nvim') && executable('nvr')
 endif
 
 ]]
-" modeline {{{1
-" vim: set foldmethod=marker et sw=2 sts=2:
+-- modeline {{{1
+-- vim: set foldmethod=marker et sw=2 sts=2:
