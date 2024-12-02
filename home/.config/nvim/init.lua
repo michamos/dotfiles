@@ -1,79 +1,5 @@
+require('lazy')
 vim.cmd [[
-
-" Vim-Plug configuration {{{1
-" ===========================
-
-" Initialization {{{2
-" -------------------
-
-" install vim-plug if not yet installed
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  try | call mkdir($HOME . '/.config/nvim/autoload', 'p') | catch /^Vim\%((\a\+)\)\=:E739/ | endtry
-  if executable('curl')
-    silent !curl -fLo ~/.config/nvim/autoload/plug.vim
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall
-  else
-    autocmd VimEnter * echohl ErrorMsg | echomsg 'vim-plug: curl command not found, plugins will not be loaded' | echohl None
-  endif
-endif
-
-call plug#begin('~/.vim/bundle')
-" }}}
-
-" Plug-in list
-" ------------
-" Github repositories
-Plug 'lifepillar/vim-solarized8'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-afterimage'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'sjl/gundo.vim'
-Plug 'sjl/AnsiEsc.vim'
-Plug 'lervag/vimtex'
-Plug 'junegunn/vim-easy-align'
-Plug 'majutsushi/tagbar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tommcdo/vim-exchange'
-Plug 'mhinz/vim-grepper'
-Plug 'chrisbra/csv.vim'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'michamos/vim-arxivist'
-Plug 'michamos/vim-bepo'
-Plug 'davidhalter/jedi-vim'
-Plug 'hynek/vim-python-pep8-indent'
-Plug 'tweekmonster/braceless.vim'
-Plug 'jmcantrell/vim-virtualenv'
-" Plug 'junegunn/vim-peekaboo'
-Plug 'ledger/vim-ledger'
-Plug 'dense-analysis/ale'
-Plug 'vim-scripts/matchit.zip'
-Plug 'leafgarland/typescript-vim'
-Plug 'junegunn/fzf', { 'dir': '~/.local/share/fzf' }
-Plug 'vim-python/python-syntax'
-Plug 'diepm/vim-rest-console'
-Plug 'tsandall/vim-rego'
-Plug 'cespare/vim-toml'
-
-" More initialization {{{2
-" ------------------------
-call plug#end()
-" }}}
 
 " Mappings {{{1
 " =============
@@ -439,12 +365,12 @@ endif
 
 " source the .vimrc file on save to apply all changes immediately {{{2
 " --------------------------------------------------------------------
-autocmd! BufWritePost .vimrc source ~/.vimrc | AirlineRefresh
+autocmd! BufWritePost init.lua source ~/.config/nvim/init.lua | AirlineRefresh
 
-" edit vim config easily {{{2
+" edit nvim config easily {{{2
 " -------------------------
 noremap <Leader>ed :split ~/.homesick/repos/dotfiles/home/<CR>
-noremap <Leader>ev :split ~/.homesick/repos/dotfiles/home/.vimrc<CR>
+noremap <Leader>ev :split ~/.homesick/repos/dotfiles/home/.config/nvim/init.lua<CR>
 command! -bang -nargs=? Ftedit execute "edit ~/.homesick/repos/dotfiles/home/.vim/" . (<q-bang> ==# '!' ? "after/" : "") . "ftplugin/" . (<q-args> ==# '' ? &filetype : <q-args>) . ".vim"
 
 " Use Vim's builtin help easily {{{2
