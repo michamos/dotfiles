@@ -1,0 +1,34 @@
+snippet fig "Figure environment" !b
+\begin{figure}
+	\centering${1:\includegraphics[scale=${3:1}]{$2}}
+	\caption{$4}
+	\label{fig$5}
+\end{figure}
+endsnippet
+
+snippet ali "Align environment" !b
+\begin{align}
+	$1
+\end{align}
+endsnippet
+
+snippet _ "Index with braces" i
+_{$1}
+endsnippet
+
+snippet ^ "Exponent with braces" i
+^{$1}
+endsnippet
+
+snippet eq "Equation environment with label" !b
+\begin{equation}
+	$1${VISUAL}
+	\label{$2}
+\end{equation}
+endsnippet
+
+snippet env "Generic environment" !b
+\begin{$1}
+	$0${VISUAL}
+\end{$1}
+endsnippet
