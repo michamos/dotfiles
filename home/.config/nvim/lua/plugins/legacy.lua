@@ -1,4 +1,4 @@
-{
+return {
 'lifepillar/vim-solarized8',
 'tpope/vim-sensible',
 'tpope/vim-repeat',
@@ -28,7 +28,6 @@
 'chrisbra/csv.vim',
 'vim-pandoc/vim-pandoc',
 'vim-pandoc/vim-pandoc-syntax',
-'michamos/vim-arxivist',
 'michamos/vim-bepo',
 'davidhalter/jedi-vim',
 'hynek/vim-python-pep8-indent',

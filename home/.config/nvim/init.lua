@@ -1,12 +1,8 @@
-require('lazy')
+require('config.lazy')
 vim.cmd [[
 
 " Mappings {{{1
 " =============
-
-"Use a more accessible key as <Leader>, <Space> is redundant by default
-let mapleader = "\<Space>"
-let maplocalleader = mapleader
 
 " other convenient mappings {{{2
 " ------------------------------
