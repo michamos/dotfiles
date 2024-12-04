@@ -10,7 +10,6 @@ keys = {
 init = function() vim.g.fugitive_git_executable = 'LANG=en git' end,  --fugitive is not so good with translations
 },
 'tpope/vim-rhubarb',
-'tpope/vim-markdown',
 'tpope/vim-git',
 'tpope/vim-sleuth',
 'tpope/vim-speeddating',
@@ -27,7 +26,6 @@ end,
 	{  '<Leader>u', vim.cmd.UndotreeToggle },
 }
 },
-'sjl/AnsiEsc.vim',
 { 'lervag/vimtex', ft = 'tex' , init = function()
 	vim.g.tex_flavor='latex'
 	-- remove sub/superscripts replacement with conceal
@@ -71,7 +69,6 @@ end,
 'dense-analysis/ale',
 'vim-scripts/matchit.zip',
 'leafgarland/typescript-vim',
-'vim-python/python-syntax',
 { 'diepm/vim-rest-console' ,
 init = function()
 	vim.g.vrc_set_default_mapping = 0
@@ -83,5 +80,4 @@ end,
 ft = 'rest',
 },
 'tsandall/vim-rego',
-'cespare/vim-toml',
 }
