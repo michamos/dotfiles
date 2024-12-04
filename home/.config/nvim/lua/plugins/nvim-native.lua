@@ -14,4 +14,12 @@ return {
 		---@type ibl.config
 		opts = {},
 	},
+	{
+		'stevearc/oil.nvim',
+		lazy = false,
+		keys = {
+			{'-', vim.cmd.Oil},
+		},
+		opts = {},
+	},
 }

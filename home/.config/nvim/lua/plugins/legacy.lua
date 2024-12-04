@@ -1,5 +1,4 @@
 return {
-'tpope/vim-sensible',
 'tpope/vim-repeat',
 'tpope/vim-surround',
 'tpope/vim-eunuch',
@@ -13,9 +12,7 @@ init = function() vim.g.fugitive_git_executable = 'LANG=en git' end,  --fugitive
 'tpope/vim-rhubarb',
 'tpope/vim-markdown',
 'tpope/vim-git',
-'tpope/vim-dispatch',
 'tpope/vim-sleuth',
-'tpope/vim-vinegar',
 'tpope/vim-speeddating',
 'tpope/vim-afterimage',
 { 'SirVer/ultisnips' , init = function()
