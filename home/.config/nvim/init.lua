@@ -177,7 +177,7 @@ vim.env.VISUAL = vim.env.EDITOR
 vim.api.nvim_create_autocmd({'FileType'}, {
   pattern = {'gitcommit', 'gitrebase', 'gitconfig'},
   group = augroup,
-  callback = function() vim.o.buffhidden = 'delete' end,
+  callback = function() vim.o.bufhidden = 'delete' end,
 })
 
 
