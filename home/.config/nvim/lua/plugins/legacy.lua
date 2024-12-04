@@ -49,10 +49,6 @@ keys = {
 	{'lxx', '<Plug>(ExchangeLine)', mode = 'n'},
 }
 },
-{ 'mhinz/vim-grepper' , init = function()
-	vim.g.grepper = { tools = {'rg', 'git', 'grep'} }
-end,
-},
 'chrisbra/csv.vim',
 { 'vim-pandoc/vim-pandoc', init = function()
 	vim.g['pandoc#folding#fdc'] = 0
