@@ -50,17 +50,10 @@ keys = {
 }
 },
 'chrisbra/csv.vim',
-{ 'vim-pandoc/vim-pandoc', init = function()
-	vim.g['pandoc#folding#fdc'] = 0
-	vim.g['pandoc#keyboard#display_motions'] = 0
-end,
-},
-'vim-pandoc/vim-pandoc-syntax',
 'michamos/vim-bepo',
 'davidhalter/jedi-vim',
 'hynek/vim-python-pep8-indent',
 'jmcantrell/vim-virtualenv',
-'junegunn/vim-peekaboo',
 'ledger/vim-ledger',
 'dense-analysis/ale',
 'vim-scripts/matchit.zip',

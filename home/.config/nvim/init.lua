@@ -13,11 +13,6 @@ vim.keymap.set({'n', 'x'}, 's', 'gk')
 -- write the buffer more easily
 vim.keymap.set('n', '<Leader><Leader>', ':w<CR>')
 
--- show some useful lists
-vim.keymap.set('n', '<Leader>b', ':ls<CR>:b<space>')
-vim.keymap.set('n', '<Leader>\'', ':marks<CR>')
-vim.keymap.set('n', '<Leader>"', ':registers<CR>')
-
 -- toggle the display of hidden characters (in 'listchars')
 vim.keymap.set('n', '<Leader>cl', ':set list!<CR>', { silent = true })
 
@@ -25,8 +20,9 @@ vim.keymap.set('n', '<Leader>cl', ':set list!<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>cd', ':cd %:p:h<CR>', { silent = true })
 
 -- '<Esc>' is far away, use '<C-Space>' instead
-vim.keymap.set({'n', 'x', 'o', 'i'}, '<C-Space>', '<Esc>')
-vim.keymap.set({'c', 's'}, '<C-Space>', '<C-C>')
+vim.keymap.set({'n', 'x', 'o', 'i'}, '<C-Space>', '<Esc>', { desc = "Escape synonym" , remap = true })
+vim.keymap.set('c', '<C-Space>', '<C-c>', { desc = "Leave command mode" })
+vim.keymap.set('t', '<C-Space>', '<C-\\><C-n>', { desc = "Leave terminal mode" })
 
 -- Use ' to go to the exact mark, since it is more accessible
 vim.keymap.set({'n', 'x', 'o'}, "'", '`')
