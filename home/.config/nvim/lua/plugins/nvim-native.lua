@@ -12,7 +12,10 @@ return {
 		main = "ibl",
 		---@module "ibl"
 		---@type ibl.config
-		opts = {},
+		opts = {
+			indent = { highlight = 'Comment' , char = "▏"},
+			scope = { highlight = 'Text', char = "▎" },
+		},
 	},
 	{
 		'stevearc/oil.nvim',
