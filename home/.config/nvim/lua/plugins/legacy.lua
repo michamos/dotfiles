@@ -38,8 +38,6 @@ end,
 	vim.g.vimtex_imaps_leader='’'
 end,
 },
-{ 'vim-airline/vim-airline' , init = function() vim.g.airline_powerline_fonts = 1 end },
-'vim-airline/vim-airline-themes',
 { 'tommcdo/vim-exchange',
 init = function() vim.g.exchange_no_mappings = true end,
 keys = {

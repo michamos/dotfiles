@@ -80,7 +80,6 @@ vim.keymap.set('n', '<Leader>y', [[:<C-u>silent! w ! pandoc -t html \| wl-copy -
 -- ===========================
 vim.o.title = true
 vim.o.bg = 'light'
-vim.cmd [[ AirlineTheme solarized ]]
 
 -- Various settings {{{1
 -- =====================
@@ -136,8 +135,12 @@ local augroup = vim.api.nvim_create_augroup('init.lua', { clear = true })
 vim.api.nvim_create_autocmd({'BufWritePost'}, {
   group = augroup,
   callback = function()
-    if vim.fn.exists(vim.b.git_dir) and vim.fn.executable(vim.b.git_dir .. '/hooks/ctags') == 1 then
-      vim.system({vim.b.git_dir .. '/hooks/ctags'})
+    local git_dir = vim.fn.FugitiveGitDir()
+    if git_dir == "" then
+      return
+    end
+    if vim.fn.exists(git_dir) and vim.fn.executable(git_dir .. '/hooks/ctags') == 1 then
+      vim.system({git_dir .. '/hooks/ctags'})
     end
   end,
   desc = 'Regnerate ctags when in git repo',
@@ -153,7 +156,7 @@ vim.o.spell = true
 vim.api.nvim_create_autocmd({'BufWritePost'}, {
   pattern = 'init.lua',
   group = augroup,
-  command = 'source ' .. vim.fn.stdpath('config') .. '/init.lua | AirlineRefresh',
+  command = 'source ' .. vim.fn.stdpath('config') .. '/init.lua',
   desc = 'Source init.lua on change',
 })
 
@@ -161,6 +164,7 @@ vim.api.nvim_create_autocmd({'BufWritePost'}, {
 -- -------------------------
 vim.keymap.set('n', '<Leader>ed', '<cmd>split ~/.homesick/repos/dotfiles/home/<CR>')
 vim.keymap.set('n', '<Leader>ev', '<cmd>split ~/.homesick/repos/dotfiles/home/.config/nvim/init.lua<CR>')
+vim.keymap.set('n', '<Leader>ep', '<cmd>split ~/.homesick/repos/dotfiles/home/.config/nvim/lua/plugins/<CR>')
 
 -- Use Vim's builtin help easily {{{2
 -- ----------------------------------
