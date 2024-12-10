@@ -32,4 +32,5 @@ return {
 		---@type render.md.UserConfig
 		opts = {},
 	},
+	{ 'nvim-tree/nvim-web-devicons', lazy = true },
 }
