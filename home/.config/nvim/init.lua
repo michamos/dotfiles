@@ -7,8 +7,8 @@ require('config.lazy')
 -- ------------------------------
 
 -- move by displayed line
-vim.keymap.set({'n', 'x'}, 't', 'gj')
-vim.keymap.set({'n', 'x'}, 's', 'gk')
+vim.keymap.set({ 'n', 'x' }, 't', 'gj')
+vim.keymap.set({ 'n', 'x' }, 's', 'gk')
 
 -- write the buffer more easily
 vim.keymap.set('n', '<Leader><Leader>', ':w<CR>')
@@ -20,13 +20,13 @@ vim.keymap.set('n', '<Leader>cl', ':set list!<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>cd', ':cd %:p:h<CR>', { silent = true })
 
 -- '<Esc>' is far away, use '<C-Space>' instead
-vim.keymap.set({'n', 'x', 'o', 'i'}, '<C-Space>', '<Esc>', { desc = "Escape synonym" , remap = true })
+vim.keymap.set({ 'n', 'x', 'o', 'i' }, '<C-Space>', '<Esc>', { desc = "Escape synonym", remap = true })
 vim.keymap.set('c', '<C-Space>', '<C-c>', { desc = "Leave command mode" })
 vim.keymap.set('t', '<C-Space>', '<C-\\><C-n>', { desc = "Leave terminal mode" })
 
 -- Use ' to go to the exact mark, since it is more accessible
-vim.keymap.set({'n', 'x', 'o'}, "'", '`')
-vim.keymap.set({'n', 'x', 'o'}, '`', "'")
+vim.keymap.set({ 'n', 'x', 'o' }, "'", '`')
+vim.keymap.set({ 'n', 'x', 'o' }, '`', "'")
 
 -- Use 'C'/'R' to operate on the current line rather than the screen
 -- we want 'C' to alternate between first non-blank character and start of line
@@ -45,16 +45,16 @@ local caret = function(mode)
   return inner
 end
 
-vim.keymap.set({'n', 'o'}, 'C',  caret('n'), { silent = true})
-vim.keymap.set('x', 'C', caret('x'), { silent = true})
-vim.keymap.set({'n', 'x', 'o'}, 'R', '$')
+vim.keymap.set({ 'n', 'o' }, 'C', caret('n'), { silent = true })
+vim.keymap.set('x', 'C', caret('x'), { silent = true })
+vim.keymap.set({ 'n', 'x', 'o' }, 'R', '$')
 
 -- Use 'U' for redo, basic 'U' is useless
 vim.keymap.set('n', 'U', '<C-r>')
 
 -- '*' is far away, we use 'M' to put the word under the cursor in the search
 -- register, then we can move with 'n'/'N'
-vim.keymap.set({'n', 'x', 'o'}, 'M', [[<cmd>silent! execute "normal! *\<C-o>"<CR>]])
+vim.keymap.set({ 'n', 'x', 'o' }, 'M', [[<cmd>silent! execute "normal! *\<C-o>"<CR>]])
 
 -- Directional arrows operate on windows
 vim.keymap.set('n', '<left>', '<C-w>h')
@@ -122,7 +122,7 @@ vim.opt.listchars = {
 
 -- command-line completion {{{2
 -- ----------------------------
-vim.opt.wildmode = {'longest:full', 'full'}
+vim.opt.wildmode = { 'longest:full', 'full' }
 
 -- persistent undo {{{2
 -- --------------------
@@ -136,7 +136,7 @@ vim.o.hidden = false
 -- generate ctags on each write {{{2
 -- ---------------------------------
 local augroup = vim.api.nvim_create_augroup('init.lua', { clear = true })
-vim.api.nvim_create_autocmd({'BufWritePost'}, {
+vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
   group = augroup,
   callback = function()
     local git_dir = vim.fn.FugitiveGitDir()
@@ -144,7 +144,7 @@ vim.api.nvim_create_autocmd({'BufWritePost'}, {
       return
     end
     if vim.fn.exists(git_dir) and vim.fn.executable(git_dir .. '/hooks/ctags') == 1 then
-      vim.system({git_dir .. '/hooks/ctags'})
+      vim.system({ git_dir .. '/hooks/ctags' })
     end
   end,
   desc = 'Regnerate ctags when in git repo',
@@ -157,7 +157,7 @@ vim.o.spell = true
 
 -- source the init.lua file on save to apply all changes immediately {{{2
 -- --------------------------------------------------------------------
-vim.api.nvim_create_autocmd({'BufWritePost'}, {
+vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
   pattern = 'init.lua',
   group = augroup,
   command = 'source ' .. vim.fn.stdpath('config') .. '/init.lua',
@@ -178,8 +178,8 @@ vim.o.keywordprg = ':help'
 -- -------------------------------------------------
 vim.env.EDITOR = 'nvim --server $NVIM --remote'
 vim.env.VISUAL = vim.env.EDITOR
-vim.api.nvim_create_autocmd({'FileType'}, {
-  pattern = {'gitcommit', 'gitrebase', 'gitconfig'},
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+  pattern = { 'gitcommit', 'gitrebase', 'gitconfig' },
   group = augroup,
   callback = function() vim.o.bufhidden = 'delete' end,
 })
