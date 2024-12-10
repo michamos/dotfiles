@@ -18,5 +18,6 @@ return {
 			{ '<leader>"', '<Cmd>Telescope registers<CR>',  desc = 'Telescope registers' },
 			{ '<leader>h', '<Cmd>Telescope help_tags<CR>',  desc = 'Telescope help tags' },
 		},
+		cmd = 'Telescope',
 	},
 }

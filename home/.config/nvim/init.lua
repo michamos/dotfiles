@@ -90,6 +90,10 @@ vim.o.bg = 'light'
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+-- keep more context when scrolling {{{2
+-- -------------------------------------
+vim.o.scrolloff = 4
+vim.o.sidescrolloff = 8
 
 -- error displayed visually {{{2
 -- -----------------------------
@@ -106,7 +110,7 @@ vim.o.mouse = 'nvc'
 vim.o.conceallevel = 2
 
 -- use unicode characters for listchars, stolen from previous version of
--- sensible
+-- sensible {{{2
 -- ---------------------------------------------------------------------
 vim.opt.listchars = {
   tab = '⇥ ',

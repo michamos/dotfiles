@@ -53,7 +53,6 @@ keys = {
 'hynek/vim-python-pep8-indent',
 'jmcantrell/vim-virtualenv',
 'ledger/vim-ledger',
-'dense-analysis/ale',
 'vim-scripts/matchit.zip',
 'leafgarland/typescript-vim',
 { 'diepm/vim-rest-console' ,
