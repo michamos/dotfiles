@@ -16,16 +16,6 @@ return {
 	'tpope/vim-speeddating',
 	'tpope/vim-afterimage',
 	{
-		'SirVer/ultisnips',
-		init = function()
-			vim.g.UltiSnipsEditSplit = "horizontal"
-			-- use <C-{t,s}> to jump between snippet insertions
-			vim.g.UltiSnipsJumpForwardTrigger = "<C-t>"
-			vim.g.UltiSnipsJumpBackwardTrigger = "<C-s>"
-		end,
-	},
-	'honza/vim-snippets',
-	{
 		'mbbill/undotree',
 		keys = {
 			{ '<Leader>u', vim.cmd.UndotreeToggle },

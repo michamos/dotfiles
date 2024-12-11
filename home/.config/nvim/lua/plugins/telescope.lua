@@ -11,7 +11,7 @@ return {
 			require('telescope').load_extension('fzf')
 		end,
 		keys = {
-			{ '<leader>f', '<Cmd>Telescope find_files hidden=true<CR>',  desc = 'Telescope find files' },
+			{ '<leader>f', '<Cmd>Telescope find_files<CR>',  desc = 'Telescope find files' },
 			{ '<leader>r', '<Cmd>Telescope live_grep<CR>',  desc = 'Telescope live grep' },
 			{ '<leader>b', '<Cmd>Telescope buffers<CR>',  desc = 'Telescope buffers' },
 			{ '<leader>d', '<Cmd>Telescope lsp_document_symbols<CR>',  desc = 'Telescope document symbols' },

@@ -36,22 +36,34 @@ vim.api.nvim_create_autocmd({'LspAttach'}, {
   desc = 'Define LSP-powered mappings',
 })
 
+vim.keymap.set("n", "wd", "<C-w>d", { desc = "Show LSP diagnostics", remap = true })
+
 return {
-	{
+		{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
+			"hrsh7th/nvim-cmp",
 		},
-		config = function()
+		opts = {
+			pyright = {},
+			ruff = {},
+			lua_ls = { on_init = lua_ls_on_init },
+		},
+		config = function(_, opts)
 			require("mason").setup()
+			local ensure_installed = {}
+			for server_name, _ in pairs(opts) do
+				table.insert(ensure_installed, server_name)
+			end
 			require("mason-lspconfig").setup {
-				ensure_installed = { "pyright", "ruff", "lua_ls" },
+				ensure_installed = ensure_installed,
 			}
-			local lsp = require("lspconfig")
-			lsp.pyright.setup {}
-			lsp.ruff.setup {}
-			lsp.lua_ls.setup { on_init = lua_ls_on_init }
+			for server_name, server_opts in pairs(opts) do
+				server_opts.capabilities = require("cmp_nvim_lsp").default_capabilities()
+				require("lspconfig")[server_name].setup(server_opts)
+			end
 		end,
 	},
 }
