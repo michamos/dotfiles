@@ -50,7 +50,6 @@ return {
 	'michamos/vim-bepo',
 	'hynek/vim-python-pep8-indent',
 	'ledger/vim-ledger',
-	'vim-scripts/matchit.zip',
 	{
 		'diepm/vim-rest-console',
 		init = function()

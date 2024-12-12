@@ -51,6 +51,7 @@ return {
 			ruff = {},
 			lua_ls = { on_init = lua_ls_on_init },
 		},
+		ft = { "lua", "python" },
 		config = function(_, opts)
 			require("mason").setup()
 			local ensure_installed = {}
