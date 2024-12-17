@@ -4,13 +4,13 @@ return {
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
 		opts = {
-			"link IblIndent Whitespace",
-			"link IblScope Text",
+			IblIndent = { link = "Whitespace" },
+			IblScope = { link = "Text" },
 		},
 		config = function(_, opts)
 			vim.cmd.colorscheme("solarized")
-			for _, highlight_cmd in ipairs(opts) do
-				vim.cmd.highlight(highlight_cmd)
+			for name, val in pairs(opts) do
+				vim.api.nvim_set_hl(0, name, val)
 			end
 		end
 	},
@@ -36,7 +36,25 @@ return {
 		'MeanderingProgrammer/render-markdown.nvim',
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
-		opts = {},
+		opts = {
+			render_modes = true
+		},
 	},
 	{ 'nvim-tree/nvim-web-devicons', lazy = true },
+	{
+		'epwalsh/obsidian.nvim',
+		version = "*",  -- recommended, use latest release instead of latest commit
+		lazy = true,
+		ft = "markdown",
+		opts = {
+			ui = { enable = false },
+			workspaces = {
+				{
+					name = "work",
+					path = "~/cernbox/vaults/work",
+				},
+			},
+		},
+	}
 }
+
