@@ -29,6 +29,8 @@ local mixed_indent = function()
 	end
 end
 
+
+
 return {
 	{
 		'nvim-lualine/lualine.nvim',
@@ -41,7 +43,10 @@ return {
 					"diff",
 					"diagnostics",
 				},
-				lualine_c = { { "filename", path = 1 } },
+				lualine_c = {
+					{ "filename", path = 1, shorting_target = 100, },
+					{ "navic", navic_opts = { depth_limit = 4, click = true } },
+				},
 				lualine_x = { "encoding",
 					"fileformat",
 					"filetype",

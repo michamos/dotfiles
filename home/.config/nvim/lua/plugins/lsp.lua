@@ -27,6 +27,12 @@ local function lua_ls_on_init(client)
 	}
 end
 
+local on_attach = function(client, bufnr)
+		    if client.server_capabilities.documentSymbolProvider then
+		        require("nvim-navic").attach(client, bufnr)
+	    end
+end
+
 local augroup = vim.api.nvim_create_augroup('lsp', { clear = true })
 vim.api.nvim_create_autocmd({'LspAttach'}, {
   group = augroup,
@@ -39,7 +45,8 @@ vim.api.nvim_create_autocmd({'LspAttach'}, {
 vim.keymap.set("n", "wd", "<C-w>d", { desc = "Show LSP diagnostics", remap = true })
 
 return {
-		{
+	"SmiteshP/nvim-navic",
+	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason.nvim",
@@ -63,6 +70,7 @@ return {
 			}
 			for server_name, server_opts in pairs(opts) do
 				server_opts.capabilities = require("cmp_nvim_lsp").default_capabilities()
+				server_opts.on_attach = on_attach
 				require("lspconfig")[server_name].setup(server_opts)
 			end
 		end,
