@@ -73,7 +73,7 @@ vim.keymap.set('n', 'G', function() if vim.v.count ~= 0 then return 'Gzv' else r
 vim.keymap.set('n', '<Leader>z', 'zjzxzjk')
 
 -- Yank all buffer to system clipboard as HTML using pandoc
-vim.keymap.set('n', '<Leader>y', [[:<C-u>silent! w ! pandoc -t html \| wl-copy -t text/html<CR>]], { silent = true })
+vim.keymap.set('n', '<Leader>y', [[:<C-u>silent! w ! pandoc -t html | wl-copy -t text/html<CR>]], { silent = true })
 
 
 -- Style {{{1
