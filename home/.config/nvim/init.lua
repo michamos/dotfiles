@@ -185,5 +185,28 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 })
 
 
+-- Various utils {{{2
+-- ------------------
+function clean_latex_markup()
+	vim.cmd [[
+	%s@\V{\\'\\i}@í@ge
+	%s@\V{\\c{c}}@ç@ge
+	%s@\V{\\'e}@é@ge
+	%s@\V{\\"a}@ä@ge
+	%s@\V{\\"u}@ü@ge
+	%s@\V{\\'o}@ó@ge
+	%s@\V{\\~n}@ñ@ge
+	%s@\V{\\~a}@ã@ge
+	%s@\V{\\`a}@à@ge
+	%s@\V\\`{a}@à@ge
+	%s@\V{\\'a}@á@ge
+	%s@\V\\'{i}@í@ge
+	%s@\V{\\'u}@ú@ge
+	%s@\V{\\`u}@ù@ge
+	%s@\V{\\"o}@ö@ge
+	%s@\V{\\`e}@è@ge
+]]
+end
+
 -- modeline {{{1
 -- vim: set foldmethod=marker et sw=2 sts=2:

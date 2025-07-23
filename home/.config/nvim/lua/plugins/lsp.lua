@@ -1,16 +1,16 @@
 local on_attach = function(client, bufnr)
-		    if client.server_capabilities.documentSymbolProvider then
-		        require("nvim-navic").attach(client, bufnr)
-	    end
+	if client.server_capabilities.documentSymbolProvider then
+		require("nvim-navic").attach(client, bufnr)
+	end
 end
 
 local augroup = vim.api.nvim_create_augroup('lsp', { clear = true })
 vim.api.nvim_create_autocmd({'LspAttach'}, {
-  group = augroup,
-  callback = function()
-	vim.keymap.set('n', 'S', vim.lsp.buf.hover, { buffer = true })
-  end,
-  desc = 'Define LSP-powered mappings',
+	group = augroup,
+	callback = function()
+		vim.keymap.set('n', 'S', vim.lsp.buf.hover, { buffer = true })
+	end,
+	desc = 'Define LSP-powered mappings',
 })
 
 vim.keymap.set("n", "wd", "<C-w>d", { desc = "Show LSP diagnostics", remap = true })
@@ -28,6 +28,7 @@ return {
 			pyright = {},
 			ruff = {},
 			lua_ls = {},
+			tinymist = {},
 		},
 		ft = { "lua", "python" },
 		config = function(_, opts)

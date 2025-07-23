@@ -4,7 +4,7 @@ return {
         build = vim.cmd.TSUpdate,
         main = "nvim-treesitter.configs",
         opts = {
-            ensure_installed = { "lua", "vim", "vimdoc", "query", "python", "javascript", "html", "yaml", "toml", "json", "regex" },
+            ensure_installed = { "lua", "vim", "vimdoc", "query", "python", "javascript", "html", "yaml", "toml", "json", "regex", "typst" },
             sync_install = false,
             highlight = { enable = true },
             indent = { enable = true },
