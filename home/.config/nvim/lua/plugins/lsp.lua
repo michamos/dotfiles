@@ -30,7 +30,7 @@ return {
 			lua_ls = {},
 			tinymist = {},
 		},
-		ft = { "lua", "python" },
+		ft = { "lua", "python", "typst" },
 		config = function(_, opts)
 			local ensure_installed = {}
 			for server_name, _ in pairs(opts) do

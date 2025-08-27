@@ -42,10 +42,11 @@ return {
 	},
 	{ 'nvim-tree/nvim-web-devicons', lazy = true },
 	{
-		'epwalsh/obsidian.nvim',
+		'obsidian-nvim/obsidian.nvim',
 		version = "*",  -- recommended, use latest release instead of latest commit
 		lazy = true,
 		ft = "markdown",
+		cmd = "Obsidian",
 		opts = {
 			ui = { enable = false },
 			workspaces = {
@@ -54,6 +55,7 @@ return {
 					path = "~/cernbox/vaults/work",
 				},
 			},
+			legacy_commands = false,
 		},
 	}
 }
