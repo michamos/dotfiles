@@ -36,18 +36,8 @@ return {
 			vim.g.vimtex_imaps_leader = '’'
 		end,
 	},
-	{
-		'tommcdo/vim-exchange',
-		init = function() vim.g.exchange_no_mappings = true end,
-		keys = {
-			{ 'lx',  '<Plug>(Exchange)',      mode = 'n' },
-			{ 'X',   '<Plug>(Exchange)',      mode = 'x' },
-			{ 'lxc', '<Plug>(ExchangeClear)', mode = 'n' },
-			{ 'lxx', '<Plug>(ExchangeLine)',  mode = 'n' },
-		}
-	},
+	'tommcdo/vim-exchange',
 	'chrisbra/csv.vim',
-	'michamos/vim-bepo',
 	'hynek/vim-python-pep8-indent',
 	'ledger/vim-ledger',
 	{

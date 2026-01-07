@@ -7,8 +7,8 @@ require('config.lazy')
 -- ------------------------------
 
 -- move by displayed line
-vim.keymap.set({ 'n', 'x' }, 't', 'gj')
-vim.keymap.set({ 'n', 'x' }, 's', 'gk')
+vim.keymap.set({ 'n', 'x' }, 'j', 'gj')
+vim.keymap.set({ 'n', 'x' }, 'k', 'gk')
 
 -- write the buffer more easily
 vim.keymap.set('n', '<Leader><Leader>', ':w<CR>')
@@ -45,26 +45,12 @@ local caret = function(mode)
   return inner
 end
 
-vim.keymap.set({ 'n', 'o' }, 'C', caret('n'), { silent = true })
-vim.keymap.set('x', 'C', caret('x'), { silent = true })
-vim.keymap.set({ 'n', 'x', 'o' }, 'R', '$')
-
+-- vim.keymap.set({ 'n', 'o' }, 'C', caret('n'), { silent = true })
+-- vim.keymap.set('x', 'C', caret('x'), { silent = true })
+-- vim.keymap.set({ 'n', 'x', 'o' }, 'R', '$')
+--
 -- Use 'U' for redo, basic 'U' is useless
 vim.keymap.set('n', 'U', '<C-r>')
-
--- '*' is far away, we use 'M' to put the word under the cursor in the search
--- register, then we can move with 'n'/'N'
-vim.keymap.set({ 'n', 'x', 'o' }, 'M', [[<cmd>silent! execute "normal! *\<C-o>"<CR>]])
-
--- Directional arrows operate on windows
-vim.keymap.set('n', '<left>', '<C-w>h')
-vim.keymap.set('n', '<down>', '<C-w>j')
-vim.keymap.set('n', '<up>', '<C-w>k')
-vim.keymap.set('n', '<right>', '<C-w>l')
-vim.keymap.set('n', '<S-left>', '<C-w>H')
-vim.keymap.set('n', '<S-down>', '<C-w>J')
-vim.keymap.set('n', '<S-up>', '<C-w>K')
-vim.keymap.set('n', '<S-right>', '<C-w>L')
 
 -- Jump open fold when jumping with '[count]G'
 vim.keymap.set('n', 'G', function() if vim.v.count ~= 0 then return 'Gzv' else return 'G' end end, { expr = true })

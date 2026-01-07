@@ -4,7 +4,7 @@ return {
 	init = function()
 		vim.g.tagbar_autofocus = 1
 		vim.g.tagbar_autoclose = 1
-		vim.g.tagbar_map_togglesort = "k"
+		vim.g.tagbar_map_togglesort = "s"
 		vim.g.tagbar_type_bib = {
 		       ctagstype = 'bibtex',
 		       kinds = { 'b:bibitems' }
